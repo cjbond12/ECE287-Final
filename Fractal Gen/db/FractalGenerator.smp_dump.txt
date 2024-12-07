@@ -1,0 +1,6 @@
+
+State Machine - |fractal_generator_top|green_screen_generator:green_screen|state
+Name state.IDLE state.DONE_STATE state.DRAW 
+state.IDLE 0 0 0 
+state.DRAW 1 0 1 
+state.DONE_STATE 1 1 0 

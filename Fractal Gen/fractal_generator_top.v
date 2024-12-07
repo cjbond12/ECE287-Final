@@ -63,7 +63,7 @@ green_screen_generator green_screen (
     .clk(CLOCK_50),       // System clock
     .rstn(reset),         // Reset signal
     .start(start),        // Start signal
-    .done(done),          // Done signal (unused but provided for consistency)
+    .done(done),          // Done signal
 
     .vga_x(x),            // VGA horizontal coordinate
     .vga_y(y),            // VGA vertical coordinate

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fractal_generator_top
-Sat Dec  7 15:00:26 2024
+Sat Dec  7 15:14:12 2024
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -14,22 +14,24 @@ Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
-  9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Source assignments for vga_adapter:VA|altsyncram:VideoMemory|altsyncram_fom1:auto_generated
- 12. Parameter Settings for User Entity Instance: vga_adapter:VA
- 13. Parameter Settings for User Entity Instance: vga_adapter:VA|vga_address_translator:user_input_translator
- 14. Parameter Settings for User Entity Instance: vga_adapter:VA|altsyncram:VideoMemory
- 15. Parameter Settings for User Entity Instance: vga_adapter:VA|vga_pll:mypll|altpll:altpll_component
- 16. Parameter Settings for User Entity Instance: vga_adapter:VA|vga_controller:controller
- 17. Parameter Settings for User Entity Instance: vga_adapter:VA|vga_controller:controller|vga_address_translator:controller_translator
- 18. Parameter Settings for User Entity Instance: green_screen_generator:green_screen
- 19. altsyncram Parameter Settings by Entity Instance
- 20. altpll Parameter Settings by Entity Instance
- 21. Port Connectivity Checks: "green_screen_generator:green_screen"
- 22. Post-Synthesis Netlist Statistics for Top Partition
- 23. Elapsed Time Per Partition
- 24. Analysis & Synthesis Messages
+  9. State Machine - |fractal_generator_top|green_screen_generator:green_screen|state
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Source assignments for vga_adapter:VA|altsyncram:VideoMemory|altsyncram_fom1:auto_generated
+ 13. Parameter Settings for User Entity Instance: vga_adapter:VA
+ 14. Parameter Settings for User Entity Instance: vga_adapter:VA|vga_address_translator:user_input_translator
+ 15. Parameter Settings for User Entity Instance: vga_adapter:VA|altsyncram:VideoMemory
+ 16. Parameter Settings for User Entity Instance: vga_adapter:VA|vga_pll:mypll|altpll:altpll_component
+ 17. Parameter Settings for User Entity Instance: vga_adapter:VA|vga_controller:controller
+ 18. Parameter Settings for User Entity Instance: vga_adapter:VA|vga_controller:controller|vga_address_translator:controller_translator
+ 19. Parameter Settings for User Entity Instance: green_screen_generator:green_screen
+ 20. altsyncram Parameter Settings by Entity Instance
+ 21. altpll Parameter Settings by Entity Instance
+ 22. Port Connectivity Checks: "green_screen_generator:green_screen"
+ 23. Post-Synthesis Netlist Statistics for Top Partition
+ 24. Elapsed Time Per Partition
+ 25. Analysis & Synthesis Messages
+ 26. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -56,13 +58,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sat Dec  7 15:00:26 2024          ;
+; Analysis & Synthesis Status     ; Successful - Sat Dec  7 15:14:12 2024          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; fractal_generator_top                          ;
 ; Top-level Entity Name           ; fractal_generator_top                          ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 69                                             ;
+; Total registers                 ; 72                                             ;
 ; Total pins                      ; 60                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 230,400                                        ;
@@ -212,36 +214,36 @@ https://fpgasoftware.intel.com/eula.
 +------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                                                                                         ;
-+---------------------------------------------+---------------------------------------------------------------------------------------+
-; Resource                                    ; Usage                                                                                 ;
-+---------------------------------------------+---------------------------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 59                                                                                    ;
-;                                             ;                                                                                       ;
-; Combinational ALUT usage for logic          ; 100                                                                                   ;
-;     -- 7 input functions                    ; 0                                                                                     ;
-;     -- 6 input functions                    ; 13                                                                                    ;
-;     -- 5 input functions                    ; 13                                                                                    ;
-;     -- 4 input functions                    ; 11                                                                                    ;
-;     -- <=3 input functions                  ; 63                                                                                    ;
-;                                             ;                                                                                       ;
-; Dedicated logic registers                   ; 69                                                                                    ;
-;                                             ;                                                                                       ;
-; I/O pins                                    ; 60                                                                                    ;
-; Total MLAB memory bits                      ; 0                                                                                     ;
-; Total block memory bits                     ; 230400                                                                                ;
-;                                             ;                                                                                       ;
-; Total DSP Blocks                            ; 0                                                                                     ;
-;                                             ;                                                                                       ;
-; Total PLLs                                  ; 1                                                                                     ;
-;     -- PLLs                                 ; 1                                                                                     ;
-;                                             ;                                                                                       ;
-; Maximum fan-out node                        ; vga_adapter:VA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated|clk[0] ;
-; Maximum fan-out                             ; 66                                                                                    ;
-; Total fan-out                               ; 1572                                                                                  ;
-; Average fan-out                             ; 4.91                                                                                  ;
-+---------------------------------------------+---------------------------------------------------------------------------------------+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimate of Logic utilization (ALMs needed) ; 86             ;
+;                                             ;                ;
+; Combinational ALUT usage for logic          ; 147            ;
+;     -- 7 input functions                    ; 2              ;
+;     -- 6 input functions                    ; 22             ;
+;     -- 5 input functions                    ; 22             ;
+;     -- 4 input functions                    ; 31             ;
+;     -- <=3 input functions                  ; 70             ;
+;                                             ;                ;
+; Dedicated logic registers                   ; 72             ;
+;                                             ;                ;
+; I/O pins                                    ; 60             ;
+; Total MLAB memory bits                      ; 0              ;
+; Total block memory bits                     ; 230400         ;
+;                                             ;                ;
+; Total DSP Blocks                            ; 0              ;
+;                                             ;                ;
+; Total PLLs                                  ; 1              ;
+;     -- PLLs                                 ; 1              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 69             ;
+; Total fan-out                               ; 1763           ;
+; Average fan-out                             ; 4.76           ;
++---------------------------------------------+----------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -249,8 +251,8 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
 ; Compilation Hierarchy Node                              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                  ; Entity Name            ; Library Name ;
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
-; |fractal_generator_top                                  ; 100 (1)             ; 69 (0)                    ; 230400            ; 0          ; 60   ; 0            ; |fractal_generator_top                                                                                               ; fractal_generator_top  ; work         ;
-;    |green_screen_generator:green_screen|                ; 24 (24)             ; 35 (35)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_generator_top|green_screen_generator:green_screen                                                           ; green_screen_generator ; work         ;
+; |fractal_generator_top                                  ; 147 (1)             ; 72 (0)                    ; 230400            ; 0          ; 60   ; 0            ; |fractal_generator_top                                                                                               ; fractal_generator_top  ; work         ;
+;    |green_screen_generator:green_screen|                ; 71 (71)             ; 38 (38)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_generator_top|green_screen_generator:green_screen                                                           ; green_screen_generator ; work         ;
 ;    |vga_adapter:VA|                                     ; 75 (0)              ; 34 (0)                    ; 230400            ; 0          ; 0    ; 0            ; |fractal_generator_top|vga_adapter:VA                                                                                ; vga_adapter            ; work         ;
 ;       |altsyncram:VideoMemory|                          ; 16 (0)              ; 8 (0)                     ; 230400            ; 0          ; 0    ; 0            ; |fractal_generator_top|vga_adapter:VA|altsyncram:VideoMemory                                                         ; altsyncram             ; work         ;
 ;          |altsyncram_fom1:auto_generated|               ; 16 (0)              ; 8 (8)                     ; 230400            ; 0          ; 0    ; 0            ; |fractal_generator_top|vga_adapter:VA|altsyncram:VideoMemory|altsyncram_fom1:auto_generated                          ; altsyncram_fom1        ; work         ;
@@ -275,17 +277,29 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+--------+------+
 
 
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------+
+; State Machine - |fractal_generator_top|green_screen_generator:green_screen|state ;
++------------------+------------+------------------+-------------------------------+
+; Name             ; state.IDLE ; state.DONE_STATE ; state.DRAW                    ;
++------------------+------------+------------------+-------------------------------+
+; state.IDLE       ; 0          ; 0                ; 0                             ;
+; state.DRAW       ; 1          ; 0                ; 1                             ;
+; state.DONE_STATE ; 1          ; 1                ; 0                             ;
++------------------+------------+------------------+-------------------------------+
+
+
 +------------------------------------------------------+
 ; General Register Statistics                          ;
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 69    ;
-; Number of registers using Synchronous Clear  ; 37    ;
+; Total registers                              ; 72    ;
+; Number of registers using Synchronous Clear  ; 20    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 55    ;
+; Number of registers using Asynchronous Clear ; 58    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 18    ;
+; Number of registers using Clock Enable       ; 10    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -295,7 +309,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |fractal_generator_top|vga_adapter:VA|vga_controller:controller|yCounter[5]                                                   ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |fractal_generator_top|vga_adapter:VA|vga_controller:controller|yCounter[2]                                                   ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |fractal_generator_top|green_screen_generator:green_screen|y_counter                                                          ;
 ; 9:1                ; 3 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |fractal_generator_top|vga_adapter:VA|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|mux_2hb:mux3|l4_w0_n0_mux_dataout ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------------------------------------------+
 
@@ -806,6 +821,9 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+---------------------------------------------------------+
 ; WIDTH          ; 320   ; Signed Integer                                          ;
 ; HEIGHT         ; 240   ; Signed Integer                                          ;
+; IDLE           ; 00    ; Unsigned Binary                                         ;
+; DRAW           ; 01    ; Unsigned Binary                                         ;
+; DONE_STATE     ; 10    ; Unsigned Binary                                         ;
 +----------------+-------+---------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -863,21 +881,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 69                          ;
-;     CLR               ; 18                          ;
-;     CLR SCLR          ; 19                          ;
-;     ENA CLR SCLR      ; 18                          ;
+; arriav_ff             ; 72                          ;
+;     CLR               ; 38                          ;
+;     CLR SCLR          ; 10                          ;
+;     ENA CLR SCLR      ; 10                          ;
 ;     plain             ; 14                          ;
-; arriav_lcell_comb     ; 101                         ;
+; arriav_lcell_comb     ; 148                         ;
 ;     arith             ; 37                          ;
 ;         1 data inputs ; 37                          ;
-;     normal            ; 46                          ;
+;     extend            ; 2                           ;
+;         7 data inputs ; 2                           ;
+;     normal            ; 91                          ;
 ;         0 data inputs ; 2                           ;
-;         2 data inputs ; 3                           ;
-;         3 data inputs ; 4                           ;
-;         4 data inputs ; 11                          ;
-;         5 data inputs ; 13                          ;
-;         6 data inputs ; 13                          ;
+;         1 data inputs ; 1                           ;
+;         2 data inputs ; 8                           ;
+;         3 data inputs ; 5                           ;
+;         4 data inputs ; 31                          ;
+;         5 data inputs ; 22                          ;
+;         6 data inputs ; 22                          ;
 ;     shared            ; 18                          ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 2                           ;
@@ -888,7 +909,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; stratixv_ram_block    ; 30                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 3.00                        ;
-; Average LUT depth     ; 1.82                        ;
+; Average LUT depth     ; 2.03                        ;
 +-----------------------+-----------------------------+
 
 
@@ -907,7 +928,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Sat Dec  7 15:00:18 2024
+    Info: Processing started: Sat Dec  7 15:14:04 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FractalGenerator -c fractal_generator_top
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -923,6 +944,10 @@ Info (12021): Found 1 design units, including 1 entities, in source file fractal
     Info (12023): Found entity 1: fractal_generator_top File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file green_screen_generator.v
     Info (12023): Found entity 1: green_screen_generator File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/green_screen_generator.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file register.v
+    Info (12023): Found entity 1: register File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/register.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file statemachine.v
+    Info (12023): Found entity 1: statemachine File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/statemachine.v Line: 1
 Info (12127): Elaborating entity "fractal_generator_top" for the top level hierarchy
 Info (12128): Elaborating entity "vga_adapter" for hierarchy "vga_adapter:VA" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 59
 Info (12128): Elaborating entity "vga_address_translator" for hierarchy "vga_adapter:VA|vga_address_translator:user_input_translator" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_adapter.v Line: 196
@@ -977,12 +1002,13 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/altp
 Info (12128): Elaborating entity "altpll_80u" for hierarchy "vga_adapter:VA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altpll.tdf Line: 898
 Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_adapter:VA|vga_controller:controller" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_adapter.v Line: 256
 Info (12128): Elaborating entity "green_screen_generator" for hierarchy "green_screen_generator:green_screen" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 72
-Warning (10230): Verilog HDL assignment warning at green_screen_generator.v(39): truncated value with size 32 to match size of target (9) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/green_screen_generator.v Line: 39
-Warning (10230): Verilog HDL assignment warning at green_screen_generator.v(43): truncated value with size 32 to match size of target (8) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/green_screen_generator.v Line: 43
+Warning (10230): Verilog HDL assignment warning at green_screen_generator.v(86): truncated value with size 32 to match size of target (9) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/green_screen_generator.v Line: 86
+Warning (10230): Verilog HDL assignment warning at green_screen_generator.v(90): truncated value with size 32 to match size of target (8) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/green_screen_generator.v Line: 90
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 8
     Warning (13410): Pin "VGA_SYNC" is stuck at VCC File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 15
 Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/output_files/fractal_generator_top.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
 Warning: RST port on the PLL is not properly connected on instance vga_adapter:VA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated|generic_pll1. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/altpll_80u.tdf Line: 34
@@ -1001,16 +1027,22 @@ Warning (21074): Design contains 13 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 6
     Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 6
     Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 6
-Info (21057): Implemented 219 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 249 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 45 output pins
-    Info (21061): Implemented 128 logic cells
+    Info (21061): Implemented 158 logic cells
     Info (21064): Implemented 30 RAM segments
     Info (21065): Implemented 1 PLLs
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 22 warnings
-    Info: Peak virtual memory: 4865 megabytes
-    Info: Processing ended: Sat Dec  7 15:00:26 2024
+    Info: Peak virtual memory: 4869 megabytes
+    Info: Processing ended: Sat Dec  7 15:14:12 2024
     Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:09
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/output_files/fractal_generator_top.map.smsg.
 
 

@@ -1,17 +1,17 @@
-Fitter Status : Successful - Sat Dec  7 14:16:44 2024
+Fitter Status : Successful - Sat Dec  7 15:01:05 2024
 Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 Revision Name : fractal_generator_top
 Top-level Entity Name : fractal_generator_top
 Family : Cyclone V
-Device : 5CSEMA6F31C6
+Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 42 / 41,910 ( < 1 % )
-Total registers : 46
+Logic utilization (in ALMs) : 59 / 32,070 ( < 1 % )
+Total registers : 72
 Total pins : 60 / 457 ( 13 % )
 Total virtual pins : 0
-Total block memory bits : 230,400 / 5,662,720 ( 4 % )
-Total RAM Blocks : 29 / 553 ( 5 % )
-Total DSP Blocks : 0 / 112 ( 0 % )
+Total block memory bits : 230,400 / 4,065,280 ( 6 % )
+Total RAM Blocks : 29 / 397 ( 7 % )
+Total DSP Blocks : 0 / 87 ( 0 % )
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0
 Total HSSI TX PCSs : 0

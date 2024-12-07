@@ -1,5 +1,5 @@
 Analysis & Synthesis report for fractal_generator_top
-Sat Dec  7 14:16:04 2024
+Sat Dec  7 15:00:26 2024
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -23,11 +23,13 @@ Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
  15. Parameter Settings for User Entity Instance: vga_adapter:VA|vga_pll:mypll|altpll:altpll_component
  16. Parameter Settings for User Entity Instance: vga_adapter:VA|vga_controller:controller
  17. Parameter Settings for User Entity Instance: vga_adapter:VA|vga_controller:controller|vga_address_translator:controller_translator
- 18. altsyncram Parameter Settings by Entity Instance
- 19. altpll Parameter Settings by Entity Instance
- 20. Post-Synthesis Netlist Statistics for Top Partition
- 21. Elapsed Time Per Partition
- 22. Analysis & Synthesis Messages
+ 18. Parameter Settings for User Entity Instance: green_screen_generator:green_screen
+ 19. altsyncram Parameter Settings by Entity Instance
+ 20. altpll Parameter Settings by Entity Instance
+ 21. Port Connectivity Checks: "green_screen_generator:green_screen"
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
 
 
 
@@ -54,13 +56,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sat Dec  7 14:16:04 2024          ;
+; Analysis & Synthesis Status     ; Successful - Sat Dec  7 15:00:26 2024          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; fractal_generator_top                          ;
 ; Top-level Entity Name           ; fractal_generator_top                          ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 34                                             ;
+; Total registers                 ; 69                                             ;
 ; Total pins                      ; 60                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 230,400                                        ;
@@ -79,7 +81,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------------+-----------------------+-----------------------+
 ; Option                                                                          ; Setting               ; Default Value         ;
 +---------------------------------------------------------------------------------+-----------------------+-----------------------+
-; Device                                                                          ; 5CSEMA6F31C6          ;                       ;
+; Device                                                                          ; 5CSEMA5F31C6          ;                       ;
 ; Top-level entity name                                                           ; fractal_generator_top ; fractal_generator_top ;
 ; Family name                                                                     ; Cyclone V             ; Cyclone V             ;
 ; Use smart compilation                                                           ; Off                   ; Off                   ;
@@ -178,35 +180,36 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                   ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                               ; Library ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
-; vga_pll.v                        ; yes             ; User Wizard-Generated File   ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_pll.v                ;         ;
-; vga_controller.v                 ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_controller.v         ;         ;
-; vga_adapter.v                    ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_adapter.v            ;         ;
-; vga_address_translator.v         ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_address_translator.v ;         ;
-; fractal_generator_top.v          ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v  ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altsyncram.tdf                   ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratix_ram_block.inc            ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_mux.inc                      ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_decode.inc                   ;         ;
-; aglobal231.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc                   ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/a_rdenreg.inc                    ;         ;
-; altrom.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altrom.inc                       ;         ;
-; altram.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altram.inc                       ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altdpram.inc                     ;         ;
-; db/altsyncram_fom1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/altsyncram_fom1.tdf   ;         ;
-; db/decode_nma.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/decode_nma.tdf        ;         ;
-; db/decode_g2a.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/decode_g2a.tdf        ;         ;
-; db/mux_2hb.tdf                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/mux_2hb.tdf           ;         ;
-; altpll.tdf                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altpll.tdf                       ;         ;
-; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratix_pll.inc                  ;         ;
-; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratixii_pll.inc                ;         ;
-; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/cycloneii_pll.inc                ;         ;
-; db/altpll_80u.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/altpll_80u.tdf        ;         ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                               ;
++------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path   ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                         ; Library ;
++------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------+---------+
+; VGA_Stuff/vga_pll.v                ; yes             ; User Wizard-Generated File   ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_pll.v                ;         ;
+; VGA_Stuff/vga_controller.v         ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_controller.v         ;         ;
+; VGA_Stuff/vga_address_translator.v ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_address_translator.v ;         ;
+; VGA_Stuff/vga_adapter.v            ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_adapter.v            ;         ;
+; fractal_generator_top.v            ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v            ;         ;
+; green_screen_generator.v           ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/green_screen_generator.v           ;         ;
+; altsyncram.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altsyncram.tdf                             ;         ;
+; stratix_ram_block.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratix_ram_block.inc                      ;         ;
+; lpm_mux.inc                        ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_mux.inc                                ;         ;
+; lpm_decode.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_decode.inc                             ;         ;
+; aglobal231.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc                             ;         ;
+; a_rdenreg.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/a_rdenreg.inc                              ;         ;
+; altrom.inc                         ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altrom.inc                                 ;         ;
+; altram.inc                         ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altram.inc                                 ;         ;
+; altdpram.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altdpram.inc                               ;         ;
+; db/altsyncram_fom1.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/altsyncram_fom1.tdf             ;         ;
+; db/decode_nma.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/decode_nma.tdf                  ;         ;
+; db/decode_g2a.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/decode_g2a.tdf                  ;         ;
+; db/mux_2hb.tdf                     ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/mux_2hb.tdf                     ;         ;
+; altpll.tdf                         ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altpll.tdf                                 ;         ;
+; stratix_pll.inc                    ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratix_pll.inc                            ;         ;
+; stratixii_pll.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratixii_pll.inc                          ;         ;
+; cycloneii_pll.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/cycloneii_pll.inc                          ;         ;
+; db/altpll_80u.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/altpll_80u.tdf                  ;         ;
++------------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------+---------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------+
@@ -214,16 +217,16 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+---------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                 ;
 +---------------------------------------------+---------------------------------------------------------------------------------------+
-; Estimate of Logic utilization (ALMs needed) ; 41                                                                                    ;
+; Estimate of Logic utilization (ALMs needed) ; 59                                                                                    ;
 ;                                             ;                                                                                       ;
-; Combinational ALUT usage for logic          ; 69                                                                                    ;
+; Combinational ALUT usage for logic          ; 100                                                                                   ;
 ;     -- 7 input functions                    ; 0                                                                                     ;
-;     -- 6 input functions                    ; 11                                                                                    ;
-;     -- 5 input functions                    ; 12                                                                                    ;
+;     -- 6 input functions                    ; 13                                                                                    ;
+;     -- 5 input functions                    ; 13                                                                                    ;
 ;     -- 4 input functions                    ; 11                                                                                    ;
-;     -- <=3 input functions                  ; 35                                                                                    ;
+;     -- <=3 input functions                  ; 63                                                                                    ;
 ;                                             ;                                                                                       ;
-; Dedicated logic registers                   ; 34                                                                                    ;
+; Dedicated logic registers                   ; 69                                                                                    ;
 ;                                             ;                                                                                       ;
 ; I/O pins                                    ; 60                                                                                    ;
 ; Total MLAB memory bits                      ; 0                                                                                     ;
@@ -236,8 +239,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;                                                                                       ;
 ; Maximum fan-out node                        ; vga_adapter:VA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated|clk[0] ;
 ; Maximum fan-out                             ; 66                                                                                    ;
-; Total fan-out                               ; 966                                                                                   ;
-; Average fan-out                             ; 3.80                                                                                  ;
+; Total fan-out                               ; 1572                                                                                  ;
+; Average fan-out                             ; 4.91                                                                                  ;
 +---------------------------------------------+---------------------------------------------------------------------------------------+
 
 
@@ -246,12 +249,14 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
 ; Compilation Hierarchy Node                              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                  ; Entity Name            ; Library Name ;
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
-; |fractal_generator_top                                  ; 69 (1)              ; 34 (0)                    ; 230400            ; 0          ; 60   ; 0            ; |fractal_generator_top                                                                                               ; fractal_generator_top  ; work         ;
-;    |vga_adapter:VA|                                     ; 68 (0)              ; 34 (0)                    ; 230400            ; 0          ; 0    ; 0            ; |fractal_generator_top|vga_adapter:VA                                                                                ; vga_adapter            ; work         ;
+; |fractal_generator_top                                  ; 100 (1)             ; 69 (0)                    ; 230400            ; 0          ; 60   ; 0            ; |fractal_generator_top                                                                                               ; fractal_generator_top  ; work         ;
+;    |green_screen_generator:green_screen|                ; 24 (24)             ; 35 (35)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_generator_top|green_screen_generator:green_screen                                                           ; green_screen_generator ; work         ;
+;    |vga_adapter:VA|                                     ; 75 (0)              ; 34 (0)                    ; 230400            ; 0          ; 0    ; 0            ; |fractal_generator_top|vga_adapter:VA                                                                                ; vga_adapter            ; work         ;
 ;       |altsyncram:VideoMemory|                          ; 16 (0)              ; 8 (0)                     ; 230400            ; 0          ; 0    ; 0            ; |fractal_generator_top|vga_adapter:VA|altsyncram:VideoMemory                                                         ; altsyncram             ; work         ;
 ;          |altsyncram_fom1:auto_generated|               ; 16 (0)              ; 8 (8)                     ; 230400            ; 0          ; 0    ; 0            ; |fractal_generator_top|vga_adapter:VA|altsyncram:VideoMemory|altsyncram_fom1:auto_generated                          ; altsyncram_fom1        ; work         ;
 ;             |decode_g2a:rden_decode_b|                  ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fractal_generator_top|vga_adapter:VA|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|decode_g2a:rden_decode_b ; decode_g2a             ; work         ;
 ;             |mux_2hb:mux3|                              ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fractal_generator_top|vga_adapter:VA|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|mux_2hb:mux3             ; mux_2hb                ; work         ;
+;       |vga_address_translator:user_input_translator|    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fractal_generator_top|vga_adapter:VA|vga_address_translator:user_input_translator                                   ; vga_address_translator ; work         ;
 ;       |vga_controller:controller|                       ; 52 (41)             ; 26 (26)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_generator_top|vga_adapter:VA|vga_controller:controller                                                      ; vga_controller         ; work         ;
 ;          |vga_address_translator:controller_translator| ; 11 (11)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fractal_generator_top|vga_adapter:VA|vga_controller:controller|vga_address_translator:controller_translator         ; vga_address_translator ; work         ;
 ;       |vga_pll:mypll|                                   ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |fractal_generator_top|vga_adapter:VA|vga_pll:mypll                                                                  ; vga_pll                ; work         ;
@@ -275,12 +280,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 34    ;
-; Number of registers using Synchronous Clear  ; 20    ;
+; Total registers                              ; 69    ;
+; Number of registers using Synchronous Clear  ; 37    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 20    ;
+; Number of registers using Asynchronous Clear ; 55    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 10    ;
+; Number of registers using Clock Enable       ; 18    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -290,8 +295,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |fractal_generator_top|vga_adapter:VA|vga_controller:controller|yCounter[9]                                                   ;
-; 9:1                ; 3 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |fractal_generator_top|vga_adapter:VA|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|mux_2hb:mux3|l4_w2_n0_mux_dataout ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |fractal_generator_top|vga_adapter:VA|vga_controller:controller|yCounter[5]                                                   ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |fractal_generator_top|vga_adapter:VA|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|mux_2hb:mux3|l4_w0_n0_mux_dataout ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -794,6 +799,17 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++----------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: green_screen_generator:green_screen ;
++----------------+-------+---------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                    ;
++----------------+-------+---------------------------------------------------------+
+; WIDTH          ; 320   ; Signed Integer                                          ;
+; HEIGHT         ; 240   ; Signed Integer                                          ;
++----------------+-------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-----------------------------------------------------------------------------------+
 ; altsyncram Parameter Settings by Entity Instance                                  ;
 +-------------------------------------------+---------------------------------------+
@@ -831,36 +847,48 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+------------------------------------------------------+
 
 
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "green_screen_generator:green_screen"                                                      ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; start      ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; vga_colour ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; vga_plot   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 34                          ;
-;     CLR SCLR          ; 10                          ;
-;     ENA CLR SCLR      ; 10                          ;
+; arriav_ff             ; 69                          ;
+;     CLR               ; 18                          ;
+;     CLR SCLR          ; 19                          ;
+;     ENA CLR SCLR      ; 18                          ;
 ;     plain             ; 14                          ;
-; arriav_lcell_comb     ; 70                          ;
-;     arith             ; 20                          ;
-;         1 data inputs ; 20                          ;
-;     normal            ; 39                          ;
+; arriav_lcell_comb     ; 101                         ;
+;     arith             ; 37                          ;
+;         1 data inputs ; 37                          ;
+;     normal            ; 46                          ;
 ;         0 data inputs ; 2                           ;
-;         2 data inputs ; 1                           ;
-;         3 data inputs ; 2                           ;
+;         2 data inputs ; 3                           ;
+;         3 data inputs ; 4                           ;
 ;         4 data inputs ; 11                          ;
-;         5 data inputs ; 12                          ;
-;         6 data inputs ; 11                          ;
-;     shared            ; 11                          ;
+;         5 data inputs ; 13                          ;
+;         6 data inputs ; 13                          ;
+;     shared            ; 18                          ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 2                           ;
-;         2 data inputs ; 7                           ;
-;         3 data inputs ; 1                           ;
+;         2 data inputs ; 13                          ;
+;         3 data inputs ; 2                           ;
 ; boundary_port         ; 60                          ;
 ; generic_pll           ; 1                           ;
 ; stratixv_ram_block    ; 30                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 3.00                        ;
-; Average LUT depth     ; 2.00                        ;
+; Average LUT depth     ; 1.82                        ;
 +-----------------------+-----------------------------+
 
 
@@ -879,29 +907,28 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Sat Dec  7 14:15:56 2024
+    Info: Processing started: Sat Dec  7 15:00:18 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FractalGenerator -c fractal_generator_top
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
-Info (12021): Found 1 design units, including 1 entities, in source file vga_pll.v
-    Info (12023): Found entity 1: vga_pll File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_pll.v Line: 36
-Info (12021): Found 1 design units, including 1 entities, in source file vga_controller.v
-    Info (12023): Found entity 1: vga_controller File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_controller.v Line: 9
-Info (12021): Found 1 design units, including 1 entities, in source file vga_adapter.v
-    Info (12023): Found entity 1: vga_adapter File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_adapter.v Line: 78
-Info (12021): Found 1 design units, including 1 entities, in source file vga_address_translator.v
-    Info (12023): Found entity 1: vga_address_translator File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_address_translator.v Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file vga_stuff/vga_pll.v
+    Info (12023): Found entity 1: vga_pll File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_pll.v Line: 36
+Info (12021): Found 1 design units, including 1 entities, in source file vga_stuff/vga_controller.v
+    Info (12023): Found entity 1: vga_controller File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_controller.v Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file vga_stuff/vga_address_translator.v
+    Info (12023): Found entity 1: vga_address_translator File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_address_translator.v Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file vga_stuff/vga_adapter.v
+    Info (12023): Found entity 1: vga_adapter File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_adapter.v Line: 78
 Info (12021): Found 1 design units, including 1 entities, in source file fractal_generator_top.v
     Info (12023): Found entity 1: fractal_generator_top File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file green_screen_generator.v
+    Info (12023): Found entity 1: green_screen_generator File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/green_screen_generator.v Line: 1
 Info (12127): Elaborating entity "fractal_generator_top" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at fractal_generator_top.v(21): object "start" assigned a value but never read File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 21
-Warning (10858): Verilog HDL warning at fractal_generator_top.v(23): object done used but never assigned File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 23
-Warning (10030): Net "done" at fractal_generator_top.v(23) has no driver or initial value, using a default initial value '0' File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 23
-Info (12128): Elaborating entity "vga_adapter" for hierarchy "vga_adapter:VA" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 57
-Info (12128): Elaborating entity "vga_address_translator" for hierarchy "vga_adapter:VA|vga_address_translator:user_input_translator" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_adapter.v Line: 196
-Info (12128): Elaborating entity "altsyncram" for hierarchy "vga_adapter:VA|altsyncram:VideoMemory" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_adapter.v Line: 217
-Info (12130): Elaborated megafunction instantiation "vga_adapter:VA|altsyncram:VideoMemory" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_adapter.v Line: 217
-Info (12133): Instantiated megafunction "vga_adapter:VA|altsyncram:VideoMemory" with the following parameter: File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_adapter.v Line: 217
+Info (12128): Elaborating entity "vga_adapter" for hierarchy "vga_adapter:VA" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 59
+Info (12128): Elaborating entity "vga_address_translator" for hierarchy "vga_adapter:VA|vga_address_translator:user_input_translator" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_adapter.v Line: 196
+Info (12128): Elaborating entity "altsyncram" for hierarchy "vga_adapter:VA|altsyncram:VideoMemory" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_adapter.v Line: 217
+Info (12130): Elaborated megafunction instantiation "vga_adapter:VA|altsyncram:VideoMemory" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_adapter.v Line: 217
+Info (12133): Instantiated megafunction "vga_adapter:VA|altsyncram:VideoMemory" with the following parameter: File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_adapter.v Line: 217
     Info (12134): Parameter "WIDTH_A" = "3"
     Info (12134): Parameter "WIDTH_B" = "3"
     Info (12134): Parameter "INTENDED_DEVICE_FAMILY" = "Cyclone II"
@@ -920,7 +947,7 @@ Info (12133): Instantiated megafunction "vga_adapter:VA|altsyncram:VideoMemory" 
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_fom1.tdf
     Info (12023): Found entity 1: altsyncram_fom1 File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/altsyncram_fom1.tdf Line: 34
 Info (12128): Elaborating entity "altsyncram_fom1" for hierarchy "vga_adapter:VA|altsyncram:VideoMemory|altsyncram_fom1:auto_generated" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Critical Warning (127003): Can't find Memory Initialization File or Hexadecimal (Intel-Format) File C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/background.mif -- setting all initial values to 0 File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_adapter.v Line: 217
+Critical Warning (127003): Can't find Memory Initialization File or Hexadecimal (Intel-Format) File C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/background.mif -- setting all initial values to 0 File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_adapter.v Line: 217
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_nma.tdf
     Info (12023): Found entity 1: decode_nma File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/decode_nma.tdf Line: 23
 Info (12128): Elaborating entity "decode_nma" for hierarchy "vga_adapter:VA|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|decode_nma:decode2" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/altsyncram_fom1.tdf Line: 47
@@ -930,10 +957,10 @@ Info (12128): Elaborating entity "decode_g2a" for hierarchy "vga_adapter:VA|alts
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_2hb.tdf
     Info (12023): Found entity 1: mux_2hb File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/mux_2hb.tdf Line: 23
 Info (12128): Elaborating entity "mux_2hb" for hierarchy "vga_adapter:VA|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|mux_2hb:mux3" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/altsyncram_fom1.tdf Line: 50
-Info (12128): Elaborating entity "vga_pll" for hierarchy "vga_adapter:VA|vga_pll:mypll" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_adapter.v Line: 235
-Info (12128): Elaborating entity "altpll" for hierarchy "vga_adapter:VA|vga_pll:mypll|altpll:altpll_component" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_pll.v Line: 53
-Info (12130): Elaborated megafunction instantiation "vga_adapter:VA|vga_pll:mypll|altpll:altpll_component" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_pll.v Line: 53
-Info (12133): Instantiated megafunction "vga_adapter:VA|vga_pll:mypll|altpll:altpll_component" with the following parameter: File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_pll.v Line: 53
+Info (12128): Elaborating entity "vga_pll" for hierarchy "vga_adapter:VA|vga_pll:mypll" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_adapter.v Line: 235
+Info (12128): Elaborating entity "altpll" for hierarchy "vga_adapter:VA|vga_pll:mypll|altpll:altpll_component" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_pll.v Line: 53
+Info (12130): Elaborated megafunction instantiation "vga_adapter:VA|vga_pll:mypll|altpll:altpll_component" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_pll.v Line: 53
+Info (12133): Instantiated megafunction "vga_adapter:VA|vga_pll:mypll|altpll:altpll_component" with the following parameter: File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_pll.v Line: 53
     Info (12134): Parameter "operation_mode" = "NORMAL"
     Info (12134): Parameter "intended_device_family" = "Cyclone II"
     Info (12134): Parameter "lpm_type" = "altpll"
@@ -948,18 +975,12 @@ Info (12133): Instantiated megafunction "vga_adapter:VA|vga_pll:mypll|altpll:alt
 Info (12021): Found 1 design units, including 1 entities, in source file db/altpll_80u.tdf
     Info (12023): Found entity 1: altpll_80u File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/db/altpll_80u.tdf Line: 26
 Info (12128): Elaborating entity "altpll_80u" for hierarchy "vga_adapter:VA|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altpll.tdf Line: 898
-Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_adapter:VA|vga_controller:controller" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/vga_adapter.v Line: 256
+Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_adapter:VA|vga_controller:controller" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/VGA_Stuff/vga_adapter.v Line: 256
+Info (12128): Elaborating entity "green_screen_generator" for hierarchy "green_screen_generator:green_screen" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 72
+Warning (10230): Verilog HDL assignment warning at green_screen_generator.v(39): truncated value with size 32 to match size of target (9) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/green_screen_generator.v Line: 39
+Warning (10230): Verilog HDL assignment warning at green_screen_generator.v(43): truncated value with size 32 to match size of target (8) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/green_screen_generator.v Line: 43
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[0]" is stuck at GND File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 8
-    Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 8
-    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 8
-    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 8
-    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 8
-    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 8
-    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 8
-    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 8
     Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 8
-    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 8
     Warning (13410): Pin "VGA_SYNC" is stuck at VCC File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 15
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
@@ -980,16 +1001,16 @@ Warning (21074): Design contains 13 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 6
     Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 6
     Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Fractal Gen/fractal_generator_top.v Line: 6
-Info (21057): Implemented 171 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 219 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 45 output pins
-    Info (21061): Implemented 80 logic cells
+    Info (21061): Implemented 128 logic cells
     Info (21064): Implemented 30 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 32 warnings
-    Info: Peak virtual memory: 4874 megabytes
-    Info: Processing ended: Sat Dec  7 14:16:04 2024
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 22 warnings
+    Info: Peak virtual memory: 4865 megabytes
+    Info: Processing ended: Sat Dec  7 15:00:26 2024
     Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:10
+    Info: Total CPU time (on all processors): 00:00:09
 
 

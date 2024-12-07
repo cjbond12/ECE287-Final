@@ -1,8 +1,8 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="c4086929709257fb3b9d"/>
+    <hash md5_digest_80b="715681a5c55b05877a4c"/>
   </project>
   <file_info>
-    <file device="5CSEMA6F31C6" path="fractal_generator_top.sof" usercode="0xFFFFFFFF"/>
+    <file device="5CSEMA5F31C6" path="fractal_generator_top.sof" usercode="0xFFFFFFFF"/>
   </file_info>
 </sld_project_info>

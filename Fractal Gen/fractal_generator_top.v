@@ -22,6 +22,8 @@ module fractal_generator_top(
     wire plot;               // Plot signal for VGA
     wire done;               // Completion signal
     wire [2:0] color;        // Color data for VGA
+    wire green_plot;         // Plot signal for green screen
+    wire [2:0] green_color;  // Green screen color data
 
     // Resolution-dependent signals
     `ifdef HIGH_RES
@@ -42,10 +44,10 @@ module fractal_generator_top(
     ) VA (
         .resetn(reset),       // Reset signal (active low)
         .clock(CLOCK_50),     // Input clock
-        .colour(color),       // Color data
+        .colour(green_color), // Green screen color data
         .x(x),                // Horizontal coordinate
         .y(y),                // Vertical coordinate
-        .plot(plot),          // Plot enable signal
+        .plot(green_plot),    // Green screen plot signal
         .VGA_R(VGA_R),        // VGA Red output
         .VGA_G(VGA_G),        // VGA Green output
         .VGA_B(VGA_B),        // VGA Blue output
@@ -56,9 +58,23 @@ module fractal_generator_top(
         .VGA_CLK(VGA_CLK)     // VGA clock
     );
 
+// Green Screen module instance
+green_screen_generator green_screen (
+    .clk(CLOCK_50),       // System clock
+    .rstn(reset),         // Reset signal
+    .start(start),        // Start signal
+    .done(done),          // Done signal (unused but provided for consistency)
+
+    .vga_x(x),            // VGA horizontal coordinate
+    .vga_y(y),            // VGA vertical coordinate
+    .vga_colour(color),   // VGA color output
+    .vga_plot(plot)       // VGA plot enable signal
+);
+
+
     // Debugging LED assignments
     assign LEDR[7:0] = y;    // Display vertical coordinate on LEDs
-    assign LEDR[8] = plot;   // Indicate plot signal
+    assign LEDR[8] = green_plot; // Indicate green screen plot signal
     assign LEDR[9] = done;   // Indicate completion signal
 
 endmodule

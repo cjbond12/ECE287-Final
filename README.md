@@ -1,4 +1,5 @@
 287 Project
+
 Tested on Cyclone V FPGA
 
 Goal: Produce a Mandelbrot Set Fractal generated in the FPGA Board and displayed to the monitor via a VGA cable
@@ -17,33 +18,45 @@ This was from messing with the VGA output and what was actually being sent
 
 ![image3](https://github.com/user-attachments/assets/d1defecd-a100-4084-a479-27c320ef05d1)
 
-
 ![image1](https://github.com/user-attachments/assets/d813345c-d7d4-4d3d-bfc0-628f0b4e8c88)
+
 
 
 ![image6](https://github.com/user-attachments/assets/bc6ca436-9eff-4e09-ba1e-323c4c00603e)
 The Eye of Sauron! This happened because we were messing with the algorithem calculations
-
 
 ![image7](https://github.com/user-attachments/assets/ee31349f-8b33-4474-ad05-c97bdf956af9)
 
 
 List of switches and which ones zoom in and out and move the image left, right, up, and down:
 
+Reset Image:
+
+Key(3)- Pressing Key(3) regenerates the image. Do this after shifting or zooming into the image
+
 Zoom: 
-SW[0]- Zoom in by factor of 2X
-SW[1]- Zoom in by factor of 4X
-SW[2]- Zoom in by factor of 8X
+
+SW(0)- Zoom in by factor of 2X
+
+SW(1)- Zoom in by factor of 4X
+
+SW(2)- Zoom in by factor of 8X
 
 Horizontal Shift:
-SW[3]- Shift Image left by factor of 2X
-SW[4]- Shift Image left by factor of 4X
-SW[5]- Shift Image left by factor of 8X
+
+SW(3)- Shift Image left by factor of 2X
+
+SW(4)- Shift Image left by factor of 4X
+
+SW(5)- Shift Image left by factor of 8X
 
 Vertical Shift:
-SW[6]- Shift Image up by factor of 2X
-SW[7]- Shift Image up by factor of 4X
-SW[8]- Shift Image up by factor of 8X
+
+SW(6)- Shift Image up by factor of 2X
+
+SW(7)- Shift Image up by factor of 4X
+
+SW(8)- Shift Image up by factor of 8X
 
 
 Finished Project:

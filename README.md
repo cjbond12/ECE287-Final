@@ -78,3 +78,7 @@ Changing the colors of the Fractal
 ![Mandlebrot with Changed Colors V2](https://github.com/user-attachments/assets/4285b987-0df1-491d-9b5b-946906a5cfdb)
 Mandlebrot with changed colors to make it contrast with the background better
 
+
+Link to Original GitHub with the SV Code:
+https://github.com/FSXAC/FPGAMandelbrot
+

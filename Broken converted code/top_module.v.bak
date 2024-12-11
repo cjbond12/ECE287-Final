@@ -1,0 +1,98 @@
+`define HIGH_RES
+
+module top_module(
+    input CLOCK_50,
+    input [3:0] KEY,
+    input [9:0] SW,
+
+    output [9:0] LEDR,
+    output [9:0] VGA_R,
+    output [9:0] VGA_G,
+    output [9:0] VGA_B,
+    output VGA_HS,
+    output VGA_VS,
+    output VGA_BLANK,
+    output VGA_SYNC,
+    output VGA_CLK
+);
+
+    // Internal signals
+    wire reset, plot, done, start;
+    wire [2:0] color;
+
+    `ifdef HIGH_RES
+    wire [8:0] x;
+    wire [7:0] y;
+    `else
+    wire [7:0] x;
+    wire [6:0] y;
+    `endif
+
+    // Reset and start signals
+    assign reset = KEY[3];
+    assign start = 1'b1;
+
+    // VGA Adapter instance
+    `ifdef HIGH_RES
+    vga_adapter #(.RESOLUTION("320x240")) VA(
+        .resetn(reset),
+        .clock(CLOCK_50),
+        .colour(color),
+        .x(x),
+        .y(y),
+        .plot(plot),
+        .VGA_R(VGA_R),
+        .VGA_G(VGA_G),
+        .VGA_B(VGA_B),
+        .VGA_HS(VGA_HS),
+        .VGA_VS(VGA_VS),
+        .VGA_BLANK(VGA_BLANK),
+        .VGA_SYNC(VGA_SYNC),
+        .VGA_CLK(VGA_CLK)
+    );
+    `else
+    vga_adapter #(.RESOLUTION("160x120")) VA(
+        .resetn(reset),
+        .clock(CLOCK_50),
+        .colour(color),
+        .x(x),
+        .y(y),
+        .plot(plot),
+        .VGA_R(VGA_R),
+        .VGA_G(VGA_G),
+        .VGA_B(VGA_B),
+        .VGA_HS(VGA_HS),
+        .VGA_VS(VGA_VS),
+        .VGA_BLANK(VGA_BLANK),
+        .VGA_SYNC(VGA_SYNC),
+        .VGA_CLK(VGA_CLK)
+    );
+    `endif
+
+    // Mandelbrot module instance
+    mandelbrot MB(
+        .clk(CLOCK_50),
+        .rstn(reset),
+        .start(start),
+        .done(done),
+
+        .zoom_level(SW[2:0]),
+        .h_offset_level(SW[5:3]),
+        .v_offset_level(SW[8:6]),
+
+        .vga_x(x),
+        .vga_y(y),
+        .vga_colour(color),
+        .vga_plot(plot)
+    );
+
+    // Debugging LEDs
+    `ifdef HIGH_RES
+    assign LEDR[7:0] = y;
+    `else
+    assign LEDR[6:0] = y;
+    `endif
+    assign LEDR[8] = plot;
+    assign LEDR[9] = done;
+
+endmodule

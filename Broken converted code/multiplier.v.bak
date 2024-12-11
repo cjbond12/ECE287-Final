@@ -1,0 +1,14 @@
+// Custom multiplier for fixed point
+// 10-bit integer, 22-bit fraction
+module multiplier (
+    input signed [31:0] a,   // Input operand a
+    input signed [31:0] b,   // Input operand b
+    output signed [31:0] out // Output result
+);
+
+    wire signed [63:0] product; // Intermediate product of a and b
+
+    assign product = a * b;    // Perform multiplication
+    assign out = product[53:22]; // Extract the fixed-point result
+
+endmodule

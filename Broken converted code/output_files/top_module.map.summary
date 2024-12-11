@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Sun Dec  8 16:27:06 2024
+Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Revision Name : top_module
+Top-level Entity Name : fractal_start
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 218
+Total pins : 60
+Total virtual pins : 0
+Total block memory bits : 230,400
+Total DSP Blocks : 18
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 1
+Total DLLs : 0

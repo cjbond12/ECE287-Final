@@ -1,0 +1,11 @@
+
+State Machine - |fractal_start|mandelbrot:MB|statemachine:SM|current
+Name current.DONE current.ENDLOOP current.PLOT current.ITERLOOP current.ILOOP current.JLOOP current.INIT current.IDLE 
+current.IDLE 0 0 0 0 0 0 0 0 
+current.INIT 0 0 0 0 0 0 1 1 
+current.JLOOP 0 0 0 0 0 1 0 1 
+current.ILOOP 0 0 0 0 1 0 0 1 
+current.ITERLOOP 0 0 0 1 0 0 0 1 
+current.PLOT 0 0 1 0 0 0 0 1 
+current.ENDLOOP 0 1 0 0 0 0 0 1 
+current.DONE 1 0 0 0 0 0 0 1 

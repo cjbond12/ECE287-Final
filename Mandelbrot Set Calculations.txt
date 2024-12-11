@@ -1,0 +1,25 @@
+Mandelbrot Set Calculations
+
+1. Iteration Formula 
+	Start: 		z_0 = 0 + 0i.  
+	-Calculate:	z_{n+1} = z_n^2 + c  
+	-Where:		z_n = a + bi 
+	-and: 		c = a_c + b_c(i) 
+	Expanded:  
+			a_new = a^2 - b^2 + a_c  
+			b_new = 2ab + b_c
+
+2. Escape Condition  
+	-Escape when:  	a^2 + b^2 > 4 
+	-Stop if maximum iterations are reached.
+
+3. Pixel Mapping  
+	-Map pixel (x,y) to complex coordinates(a_c,b_c)  
+			a_c = x_min + x((x_max - x_min) / image width)  
+			b_c = y_min + y((y_max0- y_min) / image height)
+
+4. Coloring 
+   	- For points inside the set: 
+			Color = Black (White currently).  
+   	- For points outside: Use a color gradient proportional to the number of iterations before escape:
+			Color = Gradient(iterations, max_iterations)

@@ -1,0 +1,271 @@
+// FIXED POINT CONVENTION (32 bits)
+// | 10 integer bits | 22 fraction bits |
+// Splits the 32-bit number into 10 bits for the integer part 
+// and 22 bits for the fractional part.
+`define INT(n) n[31:22]  // Integer part of the fixed-point number
+`define FRAC(n) n[21:0]  // Fractional part of the fixed-point number
+
+// Define resolution
+`define HIGH_RES
+`ifdef HIGH_RES
+    `define WIDTH 16'd320  // High resolution width
+    `define HEIGHT 16'd240 // High resolution height
+`else
+    `define WIDTH 16'd160  // Low resolution width
+    `define HEIGHT 16'd120 // Low resolution height
+`endif
+
+module mandelbrot(
+    input clk,                // Clock signal
+    input rstn,               // Active-low reset
+    input start,              // Start signal
+    output done,              // Indicates computation is complete
+
+    // Zoom and position control
+    input [2:0] zoom_level,       // Zoom level
+    input [2:0] h_offset_level,   // Horizontal offset
+    input [2:0] v_offset_level,   // Vertical offset
+
+    // VGA output
+    output [`WIDTH-1:0] vga_x,    // Horizontal coordinate
+    output [`HEIGHT-1:0] vga_y,   // Vertical coordinate
+    output [2:0] vga_colour,      // Pixel color
+    output vga_plot               // Pixel plot signal
+);
+
+// ======= [ Constants and Parameters ] =======
+// Fixed-point scaling factors and precision settings
+parameter SCALE_FACTOR_075 = {10'b0, 2'b11, 20'b0};     // Scale factor = 0.75
+parameter SCALE_FACTOR_STEP_X = {10'b0, 22'b0000000011001100110011}; // X-axis step factor (High Res)
+parameter SCALE_FACTOR_STEP_Y = {10'b0, 22'b0000000100010001000100}; // Y-axis step factor (High Res)
+
+// ======= [ Wires and Registers ] =======
+// Fixed-point variables for width, height, and coordinates
+wire signed [31:0] w, h, xmin, xmax, ymin, ymax, dx, dy;
+wire signed [31:0] h_offset, v_offset;
+reg signed [31:0] w_reg, h_offset_reg, v_offset_reg;
+
+// ======= [ Width and Height Calculations ] =======
+// Compute the display width (w) based on zoom level
+always @(*) begin
+    case (zoom_level)
+        3'b000: w_reg = {10'd10, 22'b0};        // Zoom level 0: Width = 10
+        3'b001: w_reg = {10'd4, 22'b0};         // Zoom level 1: Width = 4
+        3'b010: w_reg = {10'd2, 22'b0};         // Zoom level 2: Width = 2
+        3'b011: w_reg = {10'd1, 22'b0};         // Zoom level 3: Width = 1
+        3'b100: w_reg = {10'b0, 2'b11, 20'b0};  // Zoom level 4: Width = 0.75
+        3'b101: w_reg = {10'b0, 1'b1, 21'b0};   // Zoom level 5: Width = 0.5
+        3'b110: w_reg = {10'b0, 3'b011, 19'b0}; // Zoom level 6: Width = 0.375
+        3'b111: w_reg = {10'b0, 2'b01, 20'b0};  // Zoom level 7: Width = 0.25
+    endcase
+end
+assign w = w_reg;
+
+// Calculate the display height (h) based on width (w)
+multiplier WIDTH_TO_HEIGHT(
+    .a(w),                                      // Input: Width
+    .b(SCALE_FACTOR_075),                       // Scale factor: 0.75
+    .out(h)                                     // Output: Height
+);
+
+// ======= [ Offset Calculations ] =======
+// Compute horizontal offset (h_offset) based on the offset level
+always @(*) begin
+    case (h_offset_level)
+        3'b000: h_offset_reg = {10'd3, 1'b1, 21'b0};  // Offset level 0: 3.5
+        3'b001: h_offset_reg = {10'd2, 2'b11, 20'b0}; // Offset level 1: 2.75
+        3'b010: h_offset_reg = {10'd2, 22'b0};        // Offset level 2: 2.0
+        3'b011: h_offset_reg = {10'd1, 1'b1, 22'b0};  // Offset level 3: 1.5
+        3'b100: h_offset_reg = {10'd1, 22'b0};        // Offset level 4: 1.0
+        3'b101: h_offset_reg = {10'd0, 2'b01, 20'b0}; // Offset level 5: 0.25
+        3'b110: h_offset_reg = {10'd0, 22'b0};        // Offset level 6: 0.0
+        3'b111: h_offset_reg = {10'b1111111111, 1'b1, 21'b0}; // Offset level 7: -0.5
+    endcase
+end
+assign h_offset = h_offset_reg;
+
+// Compute vertical offset (v_offset) based on the offset level
+always @(*) begin
+    case (v_offset_level)
+        3'b000: v_offset_reg = {10'd2, 22'b0};        // Offset level 0: 2.0
+        3'b001: v_offset_reg = {10'd1, 1'b1, 21'b0};  // Offset level 1: 1.5
+        3'b010: v_offset_reg = {10'd1, 22'b0};        // Offset level 2: 1.0
+        3'b011: v_offset_reg = {10'd0, 1'b1, 22'b0};  // Offset level 3: 0.5
+        3'b100: v_offset_reg = {10'd0, 22'b0};        // Offset level 4: 0.0
+        3'b101: v_offset_reg = {10'b1111111111, 1'b1, 21'b0}; // Offset level 5: -0.5
+        3'b110: v_offset_reg = {10'b1111111111, 22'b0}; // Offset level 6: -1.0
+        3'b111: v_offset_reg = {10'b1111111110, 1'b1, 21'b0}; // Offset level 7: -1.5
+    endcase
+end
+assign v_offset = v_offset_reg;
+// ======= [ Coordinate Calculations ] =======
+// Calculate the range of x-coordinates
+assign xmin = ((w + h_offset) >> 1) * ~(32'b0); // Minimum x-coordinate
+assign xmax = xmin + w;                         // Maximum x-coordinate
+
+// Calculate the range of y-coordinates
+assign ymin = ((h + v_offset) >> 1) * ~(32'b0); // Minimum y-coordinate
+assign ymax = ymin + h;                         // Maximum y-coordinate
+
+// ======= [ Step Size Calculations ] =======
+// Compute the step size for x-coordinates (dx)
+multiplier X_STEP_SIZE(
+    .a(xmax - xmin),                            // Input: Range of x-coordinates
+    .b(SCALE_FACTOR_STEP_X),                    // Input: Step scaling factor for x
+    .out(dx)                                    // Output: X step size
+);
+
+// Compute the step size for y-coordinates (dy)
+multiplier Y_STEP_SIZE(
+    .a(ymax - ymin),                            // Input: Range of y-coordinates
+    .b(SCALE_FACTOR_STEP_Y),                    // Input: Step scaling factor for y
+    .out(dy)                                    // Output: Y step size
+);
+
+// ======= [ Constants for Computation ] =======
+// Maximum number of iterations and escape radius
+wire [15:0] iterations = 16'd32;                // Maximum iterations per pixel
+wire signed [31:0] max_distance = {10'd16, 22'b0}; // Escape radius squared (16.0)
+
+// ======= [ Registers and Signals ] =======
+// Enable signals for register updates
+wire enx, eny, ena, enb, enn, eni, enj;         
+
+// Registers for pixel coordinates and iteration values
+wire signed [31:0] x, y, a, b;                  
+wire signed [31:0] x_new, y_new, a_new, b_new;  
+
+// Registers for iteration counts and pixel indices
+wire [15:0] n, i, j;                            
+wire [15:0] n_new, i_new, j_new;                
+
+// ======= [ Register Instantiation ] =======
+// X-coordinate register
+register REG_X(
+    .d(x_new),                                  // Input: New x-coordinate
+    .q(x),                                      // Output: Current x-coordinate
+    .en(enx),                                   // Enable: Updates x when high
+    .clk(clk)                                   // Clock signal
+);
+
+// Y-coordinate register
+register REG_Y(
+    .d(y_new),                                  // Input: New y-coordinate
+    .q(y),                                      // Output: Current y-coordinate
+    .en(eny),                                   // Enable: Updates y when high
+    .clk(clk)                                   // Clock signal
+);
+
+// Real part register (a)
+register REG_A(
+    .d(a_new),                                  // Input: New real part (a)
+    .q(a),                                      // Output: Current real part (a)
+    .en(ena),                                   // Enable: Updates a when high
+    .clk(clk)                                   // Clock signal
+);
+
+// Imaginary part register (b)
+register REG_B(
+    .d(b_new),                                  // Input: New imaginary part (b)
+    .q(b),                                      // Output: Current imaginary part (b)
+    .en(enb),                                   // Enable: Updates b when high
+    .clk(clk)                                   // Clock signal
+);
+
+// Iteration count register
+register #(16) REG_N(
+    .d(n_new),                                  // Input: New iteration count
+    .q(n),                                      // Output: Current iteration count
+    .en(enn),                                   // Enable: Updates count when high
+    .clk(clk)                                   // Clock signal
+);
+
+// Horizontal pixel index register
+register #(16) REG_I(
+    .d(i_new),                                  // Input: New horizontal index
+    .q(i),                                      // Output: Current horizontal index
+    .en(eni),                                   // Enable: Updates index when high
+    .clk(clk)                                   // Clock signal
+);
+
+// Vertical pixel index register
+register #(16) REG_J(
+    .d(j_new),                                  // Input: New vertical index
+    .q(j),                                      // Output: Current vertical index
+    .en(enj),                                   // Enable: Updates index when high
+    .clk(clk)                                   // Clock signal
+);
+
+// ====== [ LOOP INTERMEDIATE CALC ] ======
+// Intermediate calculations for the Mandelbrot algorithm
+wire signed [31:0] aa, bb, ab;          // Wires for storing a^2, b^2, and a*b
+multiplier M_AA(.a(a), .b(a), .out(aa)); // Calculate a^2 using the multiplier module
+multiplier M_BB(.a(b), .b(b), .out(bb)); // Calculate b^2 using the multiplier module
+multiplier M_AB(.a(a), .b(b), .out(ab)); // Calculate a*b using the multiplier module
+
+// Combine results for the Mandelbrot formula
+wire signed [31:0] twoab = ab + ab;     // Compute 2 * a * b using addition
+wire signed [31:0] distance = aa + bb; // Compute the escape condition distance = a^2 + b^2
+
+// ====== [ COMBINATIONAL NEXT VALUE LOGIC ] ======
+// Generate the next values for various registers based on control signals
+assign x_new = initx ? xmin : (x + dx);        // If initx is high, reset x to xmin; otherwise, increment x by dx
+assign y_new = inity ? ymin : (y + dy);        // If inity is high, reset y to ymin; otherwise, increment y by dy
+assign a_new = inita ? x : (aa - bb + x);      // If inita is high, reset a to x; otherwise, compute Mandelbrot: a^2 - b^2 + x
+assign b_new = initb ? y : (twoab + y);        // If initb is high, reset b to y; otherwise, compute Mandelbrot: 2*a*b + y
+assign n_new = initn ? 16'd0 : (n + 16'd1);    // If initn is high, reset iteration count; otherwise, increment n
+assign i_new = initi ? 16'd0 : (i + 16'd1);    // If initi is high, reset horizontal pixel index; otherwise, increment i
+assign j_new = initj ? 16'd0 : (j + 16'd1);    // If initj is high, reset vertical pixel index; otherwise, increment j
+
+// ====== [ BOOLEAN STATE MACHINE INPUT ] ======
+// Signals to determine computation progress and state transitions
+wire n_equals_iterations = (n_new == iterations);    // Max iterations reached for current pixel
+wire n_lt_iterations = (n_new < iterations);         // Iterations still within limit
+wire donei = (i_new == `WIDTH);                      // All horizontal pixels processed
+wire donej = (j_new == `HEIGHT);                     // All vertical pixels processed
+wire dist_gt_max_dist = (distance > max_distance);   // Escape distance exceeded
+
+// ====== [ STATE MACHINE ] ======
+// State machine to control fractal generation
+statemachine SM(
+    .clk(clk),                     // Clock signal
+    .rst(rstn),                    // Reset signal
+    .start(start),                 // Start computation
+
+    // Inputs
+    .n_equals_iterations(n_equals_iterations), // Pixel iteration complete
+    .n_lt_iterations(n_lt_iterations),         // More iterations needed
+    .donei(donei),                             // All horizontal pixels processed
+    .donej(donej),                             // All vertical pixels processed
+    .dist_gt_max_dist(dist_gt_max_dist),       // Escape condition met
+
+    // Register control signals
+    .enx(enx), .eny(eny), .ena(ena), .enb(enb), .enn(enn), 
+    .eni(eni), .enj(enj),
+    .initx(initx), .inity(inity), 
+    .inita(inita), .initb(initb), 
+    .initn(initn), .initi(initi), .initj(initj),
+
+    // Outputs
+    .plot(vga_plot),              // Enable pixel plotting
+    .done(done)                   // Fractal computation complete
+);
+// ====== [ VGA OUTPUT ] ======
+// Assign pixel coordinates and color for the VGA adapter
+assign vga_x = i[`ifdef HIGH_RES 8:0 `else 7:0 `endif]; // Horizontal coordinate
+assign vga_y = j[`ifdef HIGH_RES 7:0 `else 6:0 `endif]; // Vertical coordinate
+
+// ====== [ VGA COLOR OUTPUT ] ======
+// Generate a smooth blue-to-red gradient based on the iteration count
+assign vga_colour = 
+    (n[7:5] == 3'b000) ? {3'b000, n[4:3]} :            // Deep blue
+    (n[7:5] == 3'b001) ? {1'b0, n[4:3], 3'b111} :      // Blue fading to cyan
+    (n[7:5] == 3'b010) ? {n[4:3], 3'b111, 1'b0} :      // Cyan transitioning to green
+    (n[7:5] == 3'b011) ? {3'b000, n[4:3], n[4:3]} :    // Green transitioning to yellow
+    (n[7:5] == 3'b100) ? {n[4:3], n[4:3], 1'b0} :      // Yellow transitioning to orange
+    (n[7:5] == 3'b101) ? {n[4:3], 1'b0, n[4:3]} :      // Orange transitioning to magenta
+    (n[7:5] == 3'b110) ? {n[4:3], 1'b0, 3'b111} :      // Magenta transitioning to purple
+                         {3'b111, n[4:3], 1'b0};       // Purple transitioning to red
+
+// assign vga_colour = n_equals_iterations ? 3'b000 : n[2:0]; // Black if max iterations reached, else gradient (OLD GRADIENT EVERY ITERATION)
+endmodule

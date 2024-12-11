@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+// Fixed-point convention: 32 bits | 10 integer bits | 22 fractional bits
+#define FIXED_TO_INT(n) ((n) >> 22)
+#define INT_TO_FIXED(n) ((n) << 22)
+#define FIXED_MUL(a, b) (((int64_t)(a) * (b)) >> 22)
+#define FIXED_DIV(a, b) (((int64_t)(a) << 22) / (b))
+
+// Constants
+#define WIDTH 320
+#define HEIGHT 240
+#define MAX_ITERATIONS 32
+#define ESCAPE_RADIUS_SQ (INT_TO_FIXED(16))  // Escape radius squared = 16
+
+// Generate Mandelbrot fractal
+void generate_mandelbrot(int zoom_level, int h_offset_level, int v_offset_level) {
+    // Zoom and offsets (fixed-point representation)
+    int32_t width_fixed = INT_TO_FIXED(10) >> zoom_level;
+    int32_t height_fixed = FIXED_MUL(width_fixed, INT_TO_FIXED(0.75));
+    int32_t x_offset = INT_TO_FIXED(h_offset_level - 4);
+    int32_t y_offset = INT_TO_FIXED(v_offset_level - 4);
+
+    // Step sizes
+    int32_t dx = FIXED_DIV(width_fixed, INT_TO_FIXED(WIDTH));
+    int32_t dy = FIXED_DIV(height_fixed, INT_TO_FIXED(HEIGHT));
+
+    // Coordinates
+    int32_t x_min = x_offset - (width_fixed / 2);
+    int32_t y_min = y_offset - (height_fixed / 2);
+
+    for (int j = 0; j < HEIGHT; ++j) {
+        int32_t y0 = y_min + j * dy;
+        for (int i = 0; i < WIDTH; ++i) {
+            int32_t x0 = x_min + i * dx;
+
+            // Mandelbrot iteration
+            int32_t x = 0, y = 0;
+            int32_t x_sq = 0, y_sq = 0;
+            int iter = 0;
+
+            while ((x_sq + y_sq <= ESCAPE_RADIUS_SQ) && (iter < MAX_ITERATIONS)) {
+                int32_t x_temp = x_sq - y_sq + x0;
+                y = FIXED_MUL(INT_TO_FIXED(2), FIXED_MUL(x, y)) + y0;
+                x = x_temp;
+
+                x_sq = FIXED_MUL(x, x);
+                y_sq = FIXED_MUL(y, y);
+                ++iter;
+            }
+
+            // Output pixel (example: grayscale based on iterations)
+            printf("Pixel[%d][%d]: Iterations = %d\n", j, i, iter);
+        }
+    }
+}
+
+int main() {
+    int zoom_level = 0;        // Zoom level (0-7)
+    int h_offset_level = 4;    // Horizontal offset level (0-7)
+    int v_offset_level = 4;    // Vertical offset level (0-7)
+
+    generate_mandelbrot(zoom_level, h_offset_level, v_offset_level);
+    return 0;
+}

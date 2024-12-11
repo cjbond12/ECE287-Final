@@ -1,0 +1,20 @@
+Fitter Status : Successful - Sun Dec  8 16:28:07 2024
+Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Revision Name : top_module
+Top-level Entity Name : fractal_start
+Family : Cyclone V
+Device : 5CSEMA5F31C6
+Timing Models : Final
+Logic utilization (in ALMs) : 326 / 32,070 ( 1 % )
+Total registers : 260
+Total pins : 60 / 457 ( 13 % )
+Total virtual pins : 0
+Total block memory bits : 230,400 / 4,065,280 ( 6 % )
+Total RAM Blocks : 29 / 397 ( 7 % )
+Total DSP Blocks : 18 / 87 ( 21 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 1 / 6 ( 17 % )
+Total DLLs : 0 / 4 ( 0 % )

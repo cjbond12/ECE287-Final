@@ -1,0 +1,2 @@
+Info (10281): Verilog HDL Declaration information at statemachine.v(28): object "plot" differs only in case from object "PLOT" in the same scope File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/statemachine.v Line: 28
+Info (10281): Verilog HDL Declaration information at statemachine.v(30): object "done" differs only in case from object "DONE" in the same scope File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/statemachine.v Line: 30

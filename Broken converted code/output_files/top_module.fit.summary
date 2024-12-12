@@ -1,12 +1,12 @@
-Fitter Status : Successful - Thu Dec 12 08:52:10 2024
+Fitter Status : Successful - Thu Dec 12 10:01:31 2024
 Quartus Prime Version : 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 Revision Name : top_module
 Top-level Entity Name : fractal_start
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 329 / 32,070 ( 1 % )
-Total registers : 248
+Logic utilization (in ALMs) : 331 / 32,070 ( 1 % )
+Total registers : 247
 Total pins : 60 / 457 ( 13 % )
 Total virtual pins : 0
 Total block memory bits : 230,400 / 4,065,280 ( 6 % )

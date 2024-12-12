@@ -202,6 +202,7 @@ assign vga_colour =
     (n < 7)  ? 3'b001 :  // Blue for slightly higher iteration counts
     (n < 12) ? 3'b010 :  // Green for moderate iteration counts
     (n < 24) ? 3'b011 :  // Cyan for high iteration counts
-               3'b111;   // White for very high iteration counts
+	 (n < 34) ? 3'b101 :  // ? color
+               3'b111 ;  // White for very high iteration counts
 
 endmodule

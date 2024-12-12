@@ -1,84 +1,111 @@
-287 Project
+# **ECE287 Project: Mandelbrot Set Fractal Generator**
 
-Tested on Cyclone V FPGA
+---
 
-Goal: Produce a Mandelbrot Set Fractal generated in the FPGA Board and displayed to the monitor via a VGA cable
+## **Project Overview**
 
-A Fractal is a graph that endlessly generates the same pattern over and over again while expanding or zooming out. 
-Think of a triangle that is made of 3 smaller triangles that are themselves made of 3 smaller triangles. 
-This pattern continues for ever. 
+**Tested on**: Cyclone V FPGA  
+**Goal**: To generate and display the Mandelbrot Set Fractal on a monitor via a VGA connection, leveraging the computational capabilities of the FPGA.
 
-The Mandelbrot Set is one of the most reconizable fractal disigns and the one we choose to repilcate on the FPGA.
-We sourced our design from a github what was written in SV (System Verilog) and converted it into verilog.
-We had to debug issues converting the original code into verilog as SV has many function that verilog does not have. 
-We also ran into issues where random or messed up images were displayed. These were often very interesting and would make some nice backgrounds.
+A fractal is a graphically recursive pattern that repeats itself at various scales. The **Mandelbrot Set** is a particularly famous fractal, known for its intricate and infinitely repeating boundary structure. This project focuses on implementing this fractal using **Verilog** for real-time rendering on an FPGA.
 
-![image4](https://github.com/user-attachments/assets/ec5f7950-ca09-4a90-adc1-bb16d293f247)
-This was from messing with the VGA output and what was actually being sent 
+---
 
-![image3](https://github.com/user-attachments/assets/d1defecd-a100-4084-a479-27c320ef05d1)
+## **Design Details**
 
-![image1](https://github.com/user-attachments/assets/d813345c-d7d4-4d3d-bfc0-628f0b4e8c88)
+### 1. **Algorithm and Computation**:
+   - The **Mandelbrot Set** is computed using the iterative formula:
+     ```
+     z(n+1) = z(n)^2 + c
+     ```
+     where:
+     - `z` is a complex number represented by `z = a + bi`.
+     - `c` corresponds to the pixel's coordinate in the complex plane.
 
+   - Registers track the coordinates, iterations, and escape conditions for each pixel.
 
+### 2. **Fixed-Point Arithmetic**:
+   - The project uses a **fixed-point format** (10 integer bits and 22 fractional bits) for precision.
+   - Calculations include:
+     - **Width and height scaling** for zoom.
+     - **Step sizes** for navigating the fractal's coordinate space.
+     - Real and imaginary parts of the iterative function.
 
-![image6](https://github.com/user-attachments/assets/bc6ca436-9eff-4e09-ba1e-323c4c00603e)
-The Eye of Sauron! This happened because we were messing with the algorithem calculations
+### 3. **State Machine Control**:
+   - An efficient **state machine** manages the fractal generation:
+     - **IDLE**: Waits for the `start` signal.
+     - **INIT**: Resets and initializes registers.
+     - **JLOOP/ILOOP**: Iterates over rows and columns of pixels.
+     - **ITERLOOP**: Performs the fractal calculation for each pixel.
+     - **PLOT**: Sends the calculated pixel color to the VGA display.
+     - **DONE**: Signals the end of computation.
 
-![image7](https://github.com/user-attachments/assets/ee31349f-8b33-4474-ad05-c97bdf956af9)
+### 4. **VGA Display Integration**:
+   - Supports **320x240** and **160x120** resolutions.
+   - Color coding is based on the iteration count, with customizable palettes:
+     - Low iterations: Black and Blue.
+     - Higher iterations: Green, Cyan, and White.
+   - Implements a double-buffered approach for seamless updates.
 
+### 5. **User Interaction**:
+   - **Switches (SW)** control zoom, horizontal, and vertical offsets:
+     - SW(0-2): Zoom levels (2x, 4x, 8x).
+     - SW(3-5): Horizontal shifts.
+     - SW(6-8): Vertical shifts.
+   - **Key(3)**: Reset to regenerate the image after adjustments.
 
-List of switches and which ones zoom in and out and move the image left, right, up, and down:
+### 6. **Debugging**:
+   - LED indicators:
+     - Show computation progress.
+     - Indicate plotting activity.
 
-Reset Image:
+---
 
-Key(3)- Pressing Key(3) regenerates the image. Do this after shifting or zooming into the image
+## **Challenges and Debugging**
 
-Zoom: 
+### **System Verilog to Verilog Conversion**:
+   - The original design, written in System Verilog, required conversion to Verilog. This involved replacing unsupported features and debugging numerous syntax and compatibility issues.
 
-SW(0)- Zoom in by factor of 2X
+### **VGA Output Artifacts**:
+   - Initial tests showed random patterns or distorted images. Adjusting the VGA clock signals and memory addressing resolved most issues.
 
-SW(1)- Zoom in by factor of 4X
+### **Algorithm Tuning**:
+   - Missteps in arithmetic operations created unintended fractal patterns, resulting in aesthetically unique but incorrect images. These artifacts, such as the "Eye of Sauron," became interesting by-products.
 
-SW(2)- Zoom in by factor of 8X
+---
 
-Horizontal Shift:
+## **Visual Outputs**
 
-SW(3)- Shift Image left by factor of 2X
+1. **Initial Patterns**:
+   - Unintended fractal artifacts created during debugging:
+     - Artifacts such as the "Eye of Sauron."
+     - Unique shapes from misaligned VGA outputs.
 
-SW(4)- Shift Image left by factor of 4X
+2. **Final Results**:
+   - The Mandelbrot Set fractal is displayed with smooth zooming and shifting capabilities.
+   - Adjusted color palettes enhance contrast and visual appeal.
 
-SW(5)- Shift Image left by factor of 8X
+**Images**:
+- ![Mandelbrot Set on Monitor](#)
+- ![Zoomed-In Mandelbrot](#)
+- ![Color Variations](#)
 
-Vertical Shift:
+---
 
-SW(6)- Shift Image up by factor of 2X
+## **Features and Functionality**
 
-SW(7)- Shift Image up by factor of 4X
+### 1. **Dynamic Fractal Control**:
+   - Zoom levels and offsets allow users to explore different regions of the fractal.
 
-SW(8)- Shift Image up by factor of 8X
+### 2. **Real-Time Rendering**:
+   - Fast computation cycles ensure real-time responsiveness.
 
+### 3. **Customizable Resolution and Colors**:
+   - Supports both high and low resolutions.
+   - Palette changes offer diverse visual styles.
 
-Finished Project:
+---
 
-![Mandelbrot on Monitor](https://github.com/user-attachments/assets/b9d430f0-c206-4c73-b210-48f75a9e75b9)
+## **Conclusion**
 
-
-![Mandlebrot zoomed in and centered](https://github.com/user-attachments/assets/e46a039a-b0b3-49cb-bf4a-7c56d8b52633)
-This is a zoomed in version of the Mandlebrot that is centered on the monitor by using the switches
-
-
-![Mandelbrot zoomed in more](https://github.com/user-attachments/assets/3e31ae4f-3fe9-4a7e-bdcc-a25f5ff81fb3)
-
-
-![Mandlebrot with Changed Colors V1](https://github.com/user-attachments/assets/37771001-5194-44e7-a06a-ee51a0b2bcfb)
-Changing the colors of the Fractal
-
-
-![Mandlebrot with Changed Colors V2](https://github.com/user-attachments/assets/4285b987-0df1-491d-9b5b-946906a5cfdb)
-Mandlebrot with changed colors to make it contrast with the background better
-
-
-Link to Original GitHub with the SV Code:
-https://github.com/FSXAC/FPGAMandelbrot
-
+This project successfully demonstrates the computational power of FPGAs by generating a complex fractal in real-time. The combination of fixed-point arithmetic, efficient state machine design, and VGA integration makes this an engaging and visually appealing project. Despite challenges with the initial implementation, the final design is robust, customizable, and capable of producing high-quality fractal visualizations.

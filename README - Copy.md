@@ -49,7 +49,8 @@ A fractal is a graphically recursive pattern that repeats itself at various scal
 
 ### 5. **User Interaction**:
    - **Switches (SW)** control zoom, horizontal, and vertical offsets:
-     - SW(0-2): Zoom levels (2x, 4x, 8x).
+   - These are all scaled levels from bit 000 to bit 111 (7 levels)
+     - SW(0-2): Zoom levels 
      - SW(3-5): Horizontal shifts.
      - SW(6-8): Vertical shifts.
    - **Key(3)**: Reset to regenerate the image after adjustments.
@@ -84,27 +85,6 @@ A fractal is a graphically recursive pattern that repeats itself at various scal
 2. **Final Results**:
    - The Mandelbrot Set fractal is displayed with smooth zooming and shifting capabilities.
    - Adjusted color palettes enhance contrast and visual appeal.
-
-**Images**:
-- ![Mandelbrot Set on Monitor](#)
-- ![Zoomed-In Mandelbrot](#)
-- ![Color Variations](#)
-
----
-
-## **Features and Functionality**
-
-### 1. **Dynamic Fractal Control**:
-   - Zoom levels and offsets allow users to explore different regions of the fractal.
-
-### 2. **Real-Time Rendering**:
-   - Fast computation cycles ensure real-time responsiveness.
-
-### 3. **Customizable Resolution and Colors**:
-   - Supports both high and low resolutions.
-   - Palette changes offer diverse visual styles.
-
----
 
 ## **Conclusion**
 

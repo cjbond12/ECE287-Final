@@ -42,7 +42,7 @@ A fractal is a graphically recursive pattern that repeats itself at various scal
 
 ### 4. **VGA Display Integration**:
    - Supports **320x240** and **160x120** resolutions. (I haven't tested 160x120 at all)
-   - Color coding is based on the iteration count, with customizable palettes: (Gets to
+   - Color coding is based on the iteration count, with customizable palettes: (Gets to roughly 50 iterations)
      - Low iterations: Black and Blue.
      - Higher iterations: Green, Cyan, Purple and White. 
    - Implements a double-buffered approach for seamless updates.
@@ -88,4 +88,4 @@ A fractal is a graphically recursive pattern that repeats itself at various scal
 
 ## **Conclusion**
 
-This project successfully demonstrates the computational power of FPGAs by generating a complex fractal in real-time. The combination of fixed-point arithmetic, efficient state machine design, and VGA integration makes this an engaging and visually appealing project. Despite challenges with the initial implementation, the final design is robust, customizable, and capable of producing high-quality fractal visualizations.
+This project successfully demonstrates the computational power of FPGAs by generating a complex fractal. The combination of fixed-point arithmetic, efficient state machine design, and VGA integration makes this an engaging and visually appealing project. Despite challenges with the initial implementation, the final design is robust, customizable, and capable of producing high-quality fractal visualizations.

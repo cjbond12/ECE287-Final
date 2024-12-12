@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/output_files/") File("top_module.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/output_files/") File("top_module.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

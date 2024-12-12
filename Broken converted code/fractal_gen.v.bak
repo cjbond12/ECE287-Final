@@ -15,7 +15,7 @@
     `define HEIGHT 16'd120 // Low resolution height
 `endif
 
-module mandelbrot(
+module fractal_gen(
     input clk,                // Clock signal
     input rstn,               // Active-low reset
     input start,              // Start signal

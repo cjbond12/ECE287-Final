@@ -18,8 +18,8 @@ module fractal_start(
 
     // Internal signals
     wire reset = KEY[3];       // Reset signal (active-high, triggered by KEY[3])
-    wire start_signal = 1'b1;  // Always-on start signal to initiate computation
-    wire plot;                 // Signal to enable pixel plotting
+    wire start_signal = 1'b1;  // Always-on start signal to init_x_pixelate computation
+    wire plot_pixels;                 // Signal to en_able pixel plot_pixelsting
     wire done;                 // Signal to indicate fractal computation completion
     wire [2:0] color;          // VGA color signal for each pixel
 
@@ -33,7 +33,7 @@ module fractal_start(
     `endif
     // Reset and start signals
     assign reset = KEY[3];  // Reset signal, active when KEY[3] is pressed
-    assign start = 1'b1;    // Start signal, always enabled
+    assign start = 1'b1;    // Start signal, always en_abled
 
     // VGA Adapter instance with resolution-dependent parameters
     `ifdef HIGH_RES
@@ -46,7 +46,7 @@ module fractal_start(
         .colour(color),       // VGA pixel color input
         .x(x),                // VGA horizontal coordinate
         .y(y),                // VGA vertical coordinate
-        .plot(plot),          // Signal to enable pixel plotting
+        .plot_pixels(plot_pixels),          // Signal to en_able pixel plot_pixelsting
         .VGA_R(VGA_R),        // VGA Red signal
         .VGA_G(VGA_G),        // VGA Green signal
         .VGA_B(VGA_B),        // VGA Blue signal
@@ -57,7 +57,7 @@ module fractal_start(
         .VGA_CLK(VGA_CLK)     // VGA clock signal
     );
     // Mandelbrot module instance
-    mandelbrot MB(
+    fractal_gen MB(
         .clk(CLOCK_50),              // System clock (50 MHz)
         .rstn(reset),                // Active-low reset signal
         .start(start),               // Start signal to begin Mandelbrot computation
@@ -72,7 +72,7 @@ module fractal_start(
         .vga_x(x),                   // Horizontal pixel coordinate for VGA
         .vga_y(y),                   // Vertical pixel coordinate for VGA
         .vga_colour(color),          // Color data for the current pixel
-        .vga_plot(plot)              // Signal to enable plotting to VGA
+        .vga_plot_pixels(plot_pixels)              // Signal to en_able plot_pixelsting to VGA
     );
 
     // Debugging LEDs
@@ -82,7 +82,7 @@ module fractal_start(
     assign LEDR[6:0] = y;            // Show 7-bit vertical coordinate on LEDs in low-resolution mode
     `endif
 
-    assign LEDR[8] = plot;           // LED 8 lights up when plotting is active
+    assign LEDR[8] = plot_pixels;           // LED 8 lights up when plot_pixelsting is active
     assign LEDR[9] = done;           // LED 9 lights up when computation is complete
 
 endmodule

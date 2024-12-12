@@ -14,51 +14,51 @@ SW[6] => SW[6].IN1
 SW[7] => SW[7].IN1
 SW[8] => SW[8].IN1
 SW[9] => ~NO_FANOUT~
-LEDR[0] << y[0].DB_MAX_OUTPUT_PORT_TYPE
-LEDR[1] << y[1].DB_MAX_OUTPUT_PORT_TYPE
-LEDR[2] << y[2].DB_MAX_OUTPUT_PORT_TYPE
-LEDR[3] << y[3].DB_MAX_OUTPUT_PORT_TYPE
-LEDR[4] << y[4].DB_MAX_OUTPUT_PORT_TYPE
-LEDR[5] << y[5].DB_MAX_OUTPUT_PORT_TYPE
-LEDR[6] << y[6].DB_MAX_OUTPUT_PORT_TYPE
-LEDR[7] << y[7].DB_MAX_OUTPUT_PORT_TYPE
-LEDR[8] << plot.DB_MAX_OUTPUT_PORT_TYPE
-LEDR[9] << mandelbrot:MB.done
-VGA_R[0] << vga_adapter:VGA_ADAPTER.VGA_R
-VGA_R[1] << vga_adapter:VGA_ADAPTER.VGA_R
-VGA_R[2] << vga_adapter:VGA_ADAPTER.VGA_R
-VGA_R[3] << vga_adapter:VGA_ADAPTER.VGA_R
-VGA_R[4] << vga_adapter:VGA_ADAPTER.VGA_R
-VGA_R[5] << vga_adapter:VGA_ADAPTER.VGA_R
-VGA_R[6] << vga_adapter:VGA_ADAPTER.VGA_R
-VGA_R[7] << vga_adapter:VGA_ADAPTER.VGA_R
-VGA_R[8] << vga_adapter:VGA_ADAPTER.VGA_R
-VGA_R[9] << vga_adapter:VGA_ADAPTER.VGA_R
-VGA_G[0] << vga_adapter:VGA_ADAPTER.VGA_G
-VGA_G[1] << vga_adapter:VGA_ADAPTER.VGA_G
-VGA_G[2] << vga_adapter:VGA_ADAPTER.VGA_G
-VGA_G[3] << vga_adapter:VGA_ADAPTER.VGA_G
-VGA_G[4] << vga_adapter:VGA_ADAPTER.VGA_G
-VGA_G[5] << vga_adapter:VGA_ADAPTER.VGA_G
-VGA_G[6] << vga_adapter:VGA_ADAPTER.VGA_G
-VGA_G[7] << vga_adapter:VGA_ADAPTER.VGA_G
-VGA_G[8] << vga_adapter:VGA_ADAPTER.VGA_G
-VGA_G[9] << vga_adapter:VGA_ADAPTER.VGA_G
-VGA_B[0] << vga_adapter:VGA_ADAPTER.VGA_B
-VGA_B[1] << vga_adapter:VGA_ADAPTER.VGA_B
-VGA_B[2] << vga_adapter:VGA_ADAPTER.VGA_B
-VGA_B[3] << vga_adapter:VGA_ADAPTER.VGA_B
-VGA_B[4] << vga_adapter:VGA_ADAPTER.VGA_B
-VGA_B[5] << vga_adapter:VGA_ADAPTER.VGA_B
-VGA_B[6] << vga_adapter:VGA_ADAPTER.VGA_B
-VGA_B[7] << vga_adapter:VGA_ADAPTER.VGA_B
-VGA_B[8] << vga_adapter:VGA_ADAPTER.VGA_B
-VGA_B[9] << vga_adapter:VGA_ADAPTER.VGA_B
-VGA_HS << vga_adapter:VGA_ADAPTER.VGA_HS
-VGA_VS << vga_adapter:VGA_ADAPTER.VGA_VS
-VGA_BLANK << vga_adapter:VGA_ADAPTER.VGA_BLANK
-VGA_SYNC << vga_adapter:VGA_ADAPTER.VGA_SYNC
-VGA_CLK << vga_adapter:VGA_ADAPTER.VGA_CLK
+LEDR[0] <= y[0].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[1] <= y[1].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[2] <= y[2].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[3] <= y[3].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[4] <= y[4].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[5] <= y[5].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[6] <= y[6].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[7] <= y[7].DB_MAX_OUTPUT_PORT_TYPE
+LEDR[8] <= plot_pixels.DB_MAX_OUTPUT_PORT_TYPE
+LEDR[9] <= fractal_gen:MB.done
+VGA_R[0] <= vga_adapter:VGA_ADAPTER.VGA_R
+VGA_R[1] <= vga_adapter:VGA_ADAPTER.VGA_R
+VGA_R[2] <= vga_adapter:VGA_ADAPTER.VGA_R
+VGA_R[3] <= vga_adapter:VGA_ADAPTER.VGA_R
+VGA_R[4] <= vga_adapter:VGA_ADAPTER.VGA_R
+VGA_R[5] <= vga_adapter:VGA_ADAPTER.VGA_R
+VGA_R[6] <= vga_adapter:VGA_ADAPTER.VGA_R
+VGA_R[7] <= vga_adapter:VGA_ADAPTER.VGA_R
+VGA_R[8] <= vga_adapter:VGA_ADAPTER.VGA_R
+VGA_R[9] <= vga_adapter:VGA_ADAPTER.VGA_R
+VGA_G[0] <= vga_adapter:VGA_ADAPTER.VGA_G
+VGA_G[1] <= vga_adapter:VGA_ADAPTER.VGA_G
+VGA_G[2] <= vga_adapter:VGA_ADAPTER.VGA_G
+VGA_G[3] <= vga_adapter:VGA_ADAPTER.VGA_G
+VGA_G[4] <= vga_adapter:VGA_ADAPTER.VGA_G
+VGA_G[5] <= vga_adapter:VGA_ADAPTER.VGA_G
+VGA_G[6] <= vga_adapter:VGA_ADAPTER.VGA_G
+VGA_G[7] <= vga_adapter:VGA_ADAPTER.VGA_G
+VGA_G[8] <= vga_adapter:VGA_ADAPTER.VGA_G
+VGA_G[9] <= vga_adapter:VGA_ADAPTER.VGA_G
+VGA_B[0] <= vga_adapter:VGA_ADAPTER.VGA_B
+VGA_B[1] <= vga_adapter:VGA_ADAPTER.VGA_B
+VGA_B[2] <= vga_adapter:VGA_ADAPTER.VGA_B
+VGA_B[3] <= vga_adapter:VGA_ADAPTER.VGA_B
+VGA_B[4] <= vga_adapter:VGA_ADAPTER.VGA_B
+VGA_B[5] <= vga_adapter:VGA_ADAPTER.VGA_B
+VGA_B[6] <= vga_adapter:VGA_ADAPTER.VGA_B
+VGA_B[7] <= vga_adapter:VGA_ADAPTER.VGA_B
+VGA_B[8] <= vga_adapter:VGA_ADAPTER.VGA_B
+VGA_B[9] <= vga_adapter:VGA_ADAPTER.VGA_B
+VGA_HS <= vga_adapter:VGA_ADAPTER.VGA_HS
+VGA_VS <= vga_adapter:VGA_ADAPTER.VGA_VS
+VGA_BLANK <= vga_adapter:VGA_ADAPTER.VGA_BLANK
+VGA_SYNC <= vga_adapter:VGA_ADAPTER.VGA_SYNC
+VGA_CLK <= vga_adapter:VGA_ADAPTER.VGA_CLK
 
 
 |fractal_start|vga_adapter:VGA_ADAPTER
@@ -84,7 +84,7 @@ y[4] => y[4].IN1
 y[5] => y[5].IN1
 y[6] => y[6].IN1
 y[7] => y[7].IN1
-plot => writeEn.IN1
+plot_pixels => writeEn.IN1
 VGA_R[0] <= vga_controller:controller.VGA_R
 VGA_R[1] <= vga_controller:controller.VGA_R
 VGA_R[2] <= vga_controller:controller.VGA_R
@@ -1713,11 +1713,11 @@ mem_address[15] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
 mem_address[16] <= Add1.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB
+|fractal_start|fractal_gen:MB
 clk => clk.IN8
 rstn => rstn.IN1
 start => start.IN1
-done <= statemachine:SM.done
+done <= state:SM.done
 zoom_level[0] => Decoder0.IN2
 zoom_level[0] => Decoder1.IN2
 zoom_level[0] => Decoder2.IN1
@@ -2367,10 +2367,10 @@ vga_y[239] <= <GND>
 vga_colour[0] <= vga_colour.DB_MAX_OUTPUT_PORT_TYPE
 vga_colour[1] <= vga_colour.DB_MAX_OUTPUT_PORT_TYPE
 vga_colour[2] <= vga_colour.DB_MAX_OUTPUT_PORT_TYPE
-vga_plot <= statemachine:SM.plot
+vga_plot_pixels <= state:SM.plot_pixels
 
 
-|fractal_start|mandelbrot:MB|multiplier:WIDTH_TO_HEIGHT
+|fractal_start|fractal_gen:MB|multiplier:WIDTH_TO_HEIGHT
 a[0] => Mult0.IN31
 a[1] => Mult0.IN30
 a[2] => Mult0.IN29
@@ -2469,7 +2469,7 @@ out[30] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
 out[31] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB|multiplier:X_STEP_SIZE
+|fractal_start|fractal_gen:MB|math:X_STEP_SIZE
 a[0] => Mult0.IN31
 a[1] => Mult0.IN30
 a[2] => Mult0.IN29
@@ -2568,7 +2568,7 @@ out[30] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
 out[31] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB|multiplier:Y_STEP_SIZE
+|fractal_start|fractal_gen:MB|math:Y_STEP_SIZE
 a[0] => Mult0.IN31
 a[1] => Mult0.IN30
 a[2] => Mult0.IN29
@@ -2667,7 +2667,7 @@ out[30] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
 out[31] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB|register:REG_X
+|fractal_start|fractal_gen:MB|register:REG_X
 d[0] => q[0]~reg0.DATAIN
 d[1] => q[1]~reg0.DATAIN
 d[2] => q[2]~reg0.DATAIN
@@ -2798,7 +2798,7 @@ q[30] <= q[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 q[31] <= q[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB|register:REG_Y
+|fractal_start|fractal_gen:MB|register:REG_Y
 d[0] => q[0]~reg0.DATAIN
 d[1] => q[1]~reg0.DATAIN
 d[2] => q[2]~reg0.DATAIN
@@ -2929,7 +2929,7 @@ q[30] <= q[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 q[31] <= q[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB|register:REG_A
+|fractal_start|fractal_gen:MB|register:REG_A
 d[0] => q[0]~reg0.DATAIN
 d[1] => q[1]~reg0.DATAIN
 d[2] => q[2]~reg0.DATAIN
@@ -3060,7 +3060,7 @@ q[30] <= q[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 q[31] <= q[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB|register:REG_B
+|fractal_start|fractal_gen:MB|register:REG_B
 d[0] => q[0]~reg0.DATAIN
 d[1] => q[1]~reg0.DATAIN
 d[2] => q[2]~reg0.DATAIN
@@ -3191,7 +3191,7 @@ q[30] <= q[30]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 q[31] <= q[31]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB|register:REG_N
+|fractal_start|fractal_gen:MB|register:REG_N
 d[0] => q[0]~reg0.DATAIN
 d[1] => q[1]~reg0.DATAIN
 d[2] => q[2]~reg0.DATAIN
@@ -3258,7 +3258,7 @@ q[14] <= q[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 q[15] <= q[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB|register:REG_I
+|fractal_start|fractal_gen:MB|register:REG_I
 d[0] => q[0]~reg0.DATAIN
 d[1] => q[1]~reg0.DATAIN
 d[2] => q[2]~reg0.DATAIN
@@ -3325,7 +3325,7 @@ q[14] <= q[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 q[15] <= q[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB|register:REG_J
+|fractal_start|fractal_gen:MB|register:REG_J
 d[0] => q[0]~reg0.DATAIN
 d[1] => q[1]~reg0.DATAIN
 d[2] => q[2]~reg0.DATAIN
@@ -3392,7 +3392,7 @@ q[14] <= q[14]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 q[15] <= q[15]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB|multiplier:M_AA
+|fractal_start|fractal_gen:MB|multiplier:M_AA
 a[0] => Mult0.IN31
 a[1] => Mult0.IN30
 a[2] => Mult0.IN29
@@ -3491,7 +3491,7 @@ out[30] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
 out[31] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB|multiplier:M_BB
+|fractal_start|fractal_gen:MB|multiplier:M_BB
 a[0] => Mult0.IN31
 a[1] => Mult0.IN30
 a[2] => Mult0.IN29
@@ -3590,7 +3590,7 @@ out[30] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
 out[31] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB|multiplier:M_AB
+|fractal_start|fractal_gen:MB|multiplier:M_AB
 a[0] => Mult0.IN31
 a[1] => Mult0.IN30
 a[2] => Mult0.IN29
@@ -3689,34 +3689,34 @@ out[30] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
 out[31] <= Mult0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|fractal_start|mandelbrot:MB|statemachine:SM
+|fractal_start|fractal_gen:MB|state:SM
 clk => current~1.DATAIN
 rst => current~3.DATAIN
 start => next.INIT.DATAB
 start => next.IDLE.DATAB
-n_equals_iterations => ~NO_FANOUT~
-n_lt_iterations => next.IN0
-donei => next.ENDLOOP.DATAB
-donei => Selector1.IN2
-donej => Selector3.IN3
-donej => Selector0.IN2
-dist_gt_max_dist => next.IN1
-dist_gt_max_dist => Selector4.IN2
-enx <= enx.DB_MAX_OUTPUT_PORT_TYPE
-eny <= eny.DB_MAX_OUTPUT_PORT_TYPE
-ena <= ena.DB_MAX_OUTPUT_PORT_TYPE
-enb <= ena.DB_MAX_OUTPUT_PORT_TYPE
-enn <= Selector4.DB_MAX_OUTPUT_PORT_TYPE
-eni <= enx.DB_MAX_OUTPUT_PORT_TYPE
-enj <= eny.DB_MAX_OUTPUT_PORT_TYPE
-initx <= initi.DB_MAX_OUTPUT_PORT_TYPE
-inity <= initj.DB_MAX_OUTPUT_PORT_TYPE
-inita <= initn.DB_MAX_OUTPUT_PORT_TYPE
-initb <= initn.DB_MAX_OUTPUT_PORT_TYPE
-initn <= initn.DB_MAX_OUTPUT_PORT_TYPE
-initi <= initi.DB_MAX_OUTPUT_PORT_TYPE
-initj <= initj.DB_MAX_OUTPUT_PORT_TYPE
-plot <= plot.DB_MAX_OUTPUT_PORT_TYPE
+completed_iterations => ~NO_FANOUT~
+needed_iterations => next.IN0
+x_pixel_done => next.ENDLOOP.DATAB
+x_pixel_done => Selector1.IN2
+y_pixel_done => Selector3.IN3
+y_pixel_done => Selector0.IN2
+esc_condition => next.IN1
+esc_condition => Selector4.IN2
+en_x <= en_x.DB_MAX_OUTPUT_PORT_TYPE
+en_y <= en_y.DB_MAX_OUTPUT_PORT_TYPE
+en_a <= en_a.DB_MAX_OUTPUT_PORT_TYPE
+en_b <= en_a.DB_MAX_OUTPUT_PORT_TYPE
+en_iteration <= Selector4.DB_MAX_OUTPUT_PORT_TYPE
+en_x_pixel <= en_x.DB_MAX_OUTPUT_PORT_TYPE
+en_y_pixel <= en_y.DB_MAX_OUTPUT_PORT_TYPE
+init_x <= init_x_pixel.DB_MAX_OUTPUT_PORT_TYPE
+init_y <= init_y_pixel.DB_MAX_OUTPUT_PORT_TYPE
+init_a <= init_iteration_c.DB_MAX_OUTPUT_PORT_TYPE
+init_b <= init_iteration_c.DB_MAX_OUTPUT_PORT_TYPE
+init_iteration_c <= init_iteration_c.DB_MAX_OUTPUT_PORT_TYPE
+init_x_pixel <= init_x_pixel.DB_MAX_OUTPUT_PORT_TYPE
+init_y_pixel <= init_y_pixel.DB_MAX_OUTPUT_PORT_TYPE
+plot_pixels <= plot_pixels.DB_MAX_OUTPUT_PORT_TYPE
 done <= done.DB_MAX_OUTPUT_PORT_TYPE
 
 

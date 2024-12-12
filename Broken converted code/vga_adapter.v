@@ -38,7 +38,7 @@
  * reprogram the DE2 board, thus allowing the video memory to be rewritten.
  *
  * To use the module connect the vga_adapter to your circuit. Your circuit should produce a value for
- * inputs X, Y and plot. When plot is high, at the next positive edge of the input clock the vga_adapter
+ * inputs X, Y and plot_pixels. When plot_pixels is high, at the next positive edge of the input clock the vga_adapter
  * will change the contents of the video memory for the pixel at location (X,Y). At the next redraw
  * cycle the VGA controller will update the contants of the screen by reading the video memory and copying
  * it over to the screen. Since the monitor screen has no memory, the VGA controller has to copy the
@@ -79,7 +79,7 @@ module vga_adapter(
 			resetn,
 			clock,
 			colour,
-			x, y, plot,
+			x, y, plot_pixels,
 			/* Signals for the DAC to drive the monitor. */
 			VGA_R,
 			VGA_G,
@@ -137,10 +137,10 @@ module vga_adapter(
 	input [((RESOLUTION == "320x240") ? (8) : (7)):0] x; 
 	input [((RESOLUTION == "320x240") ? (7) : (6)):0] y;
 	
-	/* When plot is high then at the next positive edge of the clock the pixel at (x,y) will change to
+	/* When plot_pixels is high then at the next positive edge of the clock the pixel at (x,y) will change to
 	 * a new colour, defined by the value of the colour input.
 	 */
-	input plot;
+	input plot_pixels;
 	
 	/* These outputs drive the VGA display. The VGA_CLK is also used to clock the FSM responsible for
 	 * controlling the data transferred to the DAC driving the monitor. */
@@ -164,7 +164,7 @@ module vga_adapter(
 	wire writeEn;
 	/* This is a local signal that allows the Video Memory contents to be changed.
 	 * It depends on the screen resolution, the values of X and Y inputs, as well as 
-	 * the state of the plot signal.
+	 * the state of the plot_pixels signal.
 	 */
 	
 	wire [((MONOCHROME == "TRUE") ? (0) : (BITS_PER_COLOUR_CHANNEL*3-1)):0] to_ctrl_colour;
@@ -199,8 +199,8 @@ module vga_adapter(
 
 	assign valid_160x120 = (({1'b0, x} >= 0) & ({1'b0, x} < 160) & ({1'b0, y} >= 0) & ({1'b0, y} < 120)) & (RESOLUTION == "160x120");
 	assign valid_320x240 = (({1'b0, x} >= 0) & ({1'b0, x} < 320) & ({1'b0, y} >= 0) & ({1'b0, y} < 240)) & (RESOLUTION == "320x240");
-	assign writeEn = (plot) & (valid_160x120 | valid_320x240);
-	/* Allow the user to plot a pixel if and only if the (X,Y) coordinates supplied are in a valid range. */
+	assign writeEn = (plot_pixels) & (valid_160x120 | valid_320x240);
+	/* Allow the user to plot_pixels a pixel if and only if the (X,Y) coordinates supplied are in a valid range. */
 	
 	/* Create video memory. */
 	altsyncram	VideoMemory (

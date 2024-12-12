@@ -1,21 +1,21 @@
-module statemachine (
+module states (
     input clk,                     // Clock signal
     input rst,                     // Reset signal
     input start,                   // Start computation signal
 
-    input n_equals_iterations,     // Indicates pixel iteration completion
-    input n_lt_iterations,         // Indicates if more iterations are needed
-    input donei,                   // Horizontal pixel processing complete
-    input donej,                   // Vertical pixel processing complete
-    input dist_gt_max_dist,        // Escape condition met
+    input completed_iterations,     // Indicates pixel iteration completion
+    input needed_iterations,         // Indicates if more iterations are needed
+    input x_pixel_done,                   // Horizontal pixel processing complete
+    input y_pixel_done,                   // Vertical pixel processing complete
+    input esc_condition,        // Escape condition met
 
-    output reg enx,                // Enable `x` register
-    output reg eny,                // Enable `y` register
-    output reg ena,                // Enable `a` register
-    output reg enb,                // Enable `b` register
-    output reg enn,                // Enable iteration count register (`n`)
-    output reg eni,                // Enable horizontal pixel index register (`i`)
-    output reg enj,                // Enable vertical pixel index register (`j`)
+    output reg en_x,                // en_able `x` register
+    output reg en_y,                // en_able `y` register
+    output reg en_a,                // en_able `a` register
+    output reg en_b,                // en_able `b` register
+    output reg en_iteration,                // en_able iteration count register (`n`)
+    output reg en_x_pixel,                // en_able horizontal pixel index register (`i`)
+    output reg en_y_pixel,                // en_able vertical pixel index register (`j`)
 
     output reg initx,              // Initialize `x` register
     output reg inity,              // Initialize `y` register
@@ -29,7 +29,7 @@ module statemachine (
     output reg done                // Computation completion signal
 );
 
-// State encoding using parameter for better readability and maintenance
+// State encoding using parameter for better readability and mainten_ance
 parameter IDLE     = 3'b000, // Idle: Waiting for start signal
           INIT     = 3'b001, // Initialize registers
           JLOOP    = 3'b010, // Vertical pixel loop
@@ -49,10 +49,10 @@ always @(*) begin
         INIT:    next = JLOOP;               // Initialize and transition to JLOOP
         JLOOP:   next = ILOOP;               // Start horizontal loop
         ILOOP:   next = ITERLOOP;            // Begin Mandelbrot iterations
-        ITERLOOP: next = (dist_gt_max_dist || ~n_lt_iterations) ? PLOT : ITERLOOP;
+        ITERLOOP: next = (esc_condition || ~needed_iterations) ? PLOT : ITERLOOP;
                   // Transition to PLOT if escape or max iterations reached; otherwise, continue
-        PLOT:    next = donei ? ENDLOOP : ILOOP; // Transition to ENDLOOP if row complete; otherwise, continue ILOOP
-        ENDLOOP: next = donej ? DONE : JLOOP;    // Transition to DONE if all rows complete; otherwise, next row
+        PLOT:    next = x_pixel_done ? ENDLOOP : ILOOP; // Transition to ENDLOOP if row complete; otherwise, continue ILOOP
+        ENDLOOP: next = y_pixel_done ? DONE : JLOOP;    // Transition to DONE if all rows complete; otherwise, next row
         DONE:    next = DONE;                   // Stay in DONE state indefinitely
         default: next = IDLE;                   // Safety fallback to IDLE
     endcase
@@ -70,8 +70,8 @@ end
 // Sets control signals based on the current state
 always @(*) begin
     // Default values for all control signals
-    enx = 1'b0; eny = 1'b0; ena = 1'b0; enb = 1'b0;
-    enn = 1'b0; eni = 1'b0; enj = 1'b0;
+    en_x = 1'b0; en_y = 1'b0; en_a = 1'b0; en_b = 1'b0;
+    en_iteration = 1'b0; en_x_pixel = 1'b0; en_y_pixel = 1'b0;
     initx = 1'b0; inity = 1'b0; inita = 1'b0; initb = 1'b0;
     initn = 1'b0; initi = 1'b0; initj = 1'b0;
     plot = 1'b0; done = 1'b0;
@@ -79,33 +79,33 @@ always @(*) begin
     // State-specific assignments
     case (current)
         INIT: begin
-            inity = 1'b1; eny = 1'b1;   // Reset and enable y register
-            initj = 1'b1; enj = 1'b1;   // Reset and enable vertical index (j)
+            inity = 1'b1; en_y = 1'b1;   // Reset and en_able y register
+            initj = 1'b1; en_y_pixel = 1'b1;   // Reset and en_able vertical index (j)
         end
 
         JLOOP: begin
-            initx = 1'b1; enx = 1'b1;   // Reset and enable x register
-            initi = 1'b1; eni = 1'b1;   // Reset and enable horizontal index (i)
+            initx = 1'b1; en_x = 1'b1;   // Reset and en_able x register
+            initi = 1'b1; en_x_pixel = 1'b1;   // Reset and en_able horizontal index (i)
         end
 
         ILOOP: begin
-            inita = 1'b1; ena = 1'b1;   // Reset and enable `a` register
-            initb = 1'b1; enb = 1'b1;   // Reset and enable `b` register
-            initn = 1'b1; enn = 1'b1;   // Reset and enable iteration counter (n)
+            inita = 1'b1; en_a = 1'b1;   // Reset and en_able `a` register
+            initb = 1'b1; en_b = 1'b1;   // Reset and en_able `b` register
+            initn = 1'b1; en_iteration = 1'b1;   // Reset and en_able iteration counter (n)
         end
 
         ITERLOOP: begin
-            ena = 1'b1; enb = 1'b1;     // Enable updates for `a` and `b` registers
-            enn = ~dist_gt_max_dist;    // Increment iteration count if within escape radius
+            en_a = 1'b1; en_b = 1'b1;     // en_able updates for `a` and `b` registers
+            en_iteration = ~esc_condition;    // Increment iteration count if within escape radius
         end
 
         PLOT: begin
-            enx = 1'b1; eni = 1'b1;     // Enable updates for x and horizontal index (i)
-            plot = 1'b1;                // Enable VGA plotting
+            en_x = 1'b1; en_x_pixel = 1'b1;     // en_able updates for x and horizontal index (i)
+            plot = 1'b1;                // en_able VGA plotting
         end
 
         ENDLOOP: begin
-            eny = 1'b1; enj = 1'b1;     // Enable updates for y and vertical index (j)
+            en_y = 1'b1; en_y_pixel = 1'b1;     // en_able updates for y and vertical index (j)
         end
 
         DONE: begin

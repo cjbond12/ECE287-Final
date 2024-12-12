@@ -1,4 +1,4 @@
-module multiplier (
+module math (
     input signed [31:0] a,   // Input operand a
     input signed [31:0] b,   // Input operand b
     output signed [31:0] out // Output result

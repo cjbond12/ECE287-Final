@@ -1,5 +1,5 @@
 Analysis & Synthesis report for top_module
-Sun Dec  8 16:27:06 2024
+Wed Dec 11 23:29:06 2024
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -15,7 +15,7 @@ Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Analysis & Synthesis RAM Summary
   9. Analysis & Synthesis DSP Block Usage Summary
- 10. State Machine - |fractal_start|mandelbrot:MB|statemachine:SM|current
+ 10. State Machine - |fractal_start|fractal_gen:MB|state:SM|current
  11. Registers Removed During Synthesis
  12. General Register Statistics
  13. Multiplexer Restructuring Statistics (Restructuring Performed)
@@ -26,22 +26,22 @@ Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
  18. Parameter Settings for User Entity Instance: vga_adapter:VGA_ADAPTER|vga_pll:mypll|altpll:altpll_component
  19. Parameter Settings for User Entity Instance: vga_adapter:VGA_ADAPTER|vga_controller:controller
  20. Parameter Settings for User Entity Instance: vga_adapter:VGA_ADAPTER|vga_controller:controller|vga_address_translator:controller_translator
- 21. Parameter Settings for User Entity Instance: mandelbrot:MB
- 22. Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_X
- 23. Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_Y
- 24. Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_A
- 25. Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_B
- 26. Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_N
- 27. Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_I
- 28. Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_J
- 29. Parameter Settings for User Entity Instance: mandelbrot:MB|statemachine:SM
+ 21. Parameter Settings for User Entity Instance: fractal_gen:MB
+ 22. Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_X
+ 23. Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_Y
+ 24. Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_A
+ 25. Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_B
+ 26. Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_N
+ 27. Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_I
+ 28. Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_J
+ 29. Parameter Settings for User Entity Instance: fractal_gen:MB|state:SM
  30. altsyncram Parameter Settings by Entity Instance
  31. altpll Parameter Settings by Entity Instance
- 32. Port Connectivity Checks: "mandelbrot:MB|multiplier:M_AB"
- 33. Port Connectivity Checks: "mandelbrot:MB|multiplier:Y_STEP_SIZE"
- 34. Port Connectivity Checks: "mandelbrot:MB|multiplier:X_STEP_SIZE"
- 35. Port Connectivity Checks: "mandelbrot:MB|multiplier:WIDTH_TO_HEIGHT"
- 36. Port Connectivity Checks: "mandelbrot:MB"
+ 32. Port Connectivity Checks: "fractal_gen:MB|multiplier:M_AB"
+ 33. Port Connectivity Checks: "fractal_gen:MB|math:Y_STEP_SIZE"
+ 34. Port Connectivity Checks: "fractal_gen:MB|math:X_STEP_SIZE"
+ 35. Port Connectivity Checks: "fractal_gen:MB|multiplier:WIDTH_TO_HEIGHT"
+ 36. Port Connectivity Checks: "fractal_gen:MB"
  37. Post-Synthesis Netlist Statistics for Top Partition
  38. Elapsed Time Per Partition
  39. Analysis & Synthesis Messages
@@ -72,7 +72,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun Dec  8 16:27:06 2024          ;
+; Analysis & Synthesis Status     ; Successful - Wed Dec 11 23:29:06 2024          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; top_module                                     ;
 ; Top-level Entity Name           ; fractal_start                                  ;
@@ -200,39 +200,40 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                        ;
-+----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                    ; Library ;
-+----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------------------------------+---------+
-; fractal_start.v                  ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/fractal_start.v          ;         ;
-; statemachine.v                   ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/statemachine.v           ;         ;
-; register.v                       ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/register.v               ;         ;
-; multiplier.v                     ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/multiplier.v             ;         ;
-; vga_adapter.v                    ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_adapter.v            ;         ;
-; vga_address_translator.v         ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_address_translator.v ;         ;
-; vga_controller.v                 ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_controller.v         ;         ;
-; vga_pll.v                        ; yes             ; User Wizard-Generated File   ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_pll.v                ;         ;
-; mandelbrot.v                     ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v             ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altsyncram.tdf                                        ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratix_ram_block.inc                                 ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_mux.inc                                           ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_decode.inc                                        ;         ;
-; aglobal231.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc                                        ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/a_rdenreg.inc                                         ;         ;
-; altrom.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altrom.inc                                            ;         ;
-; altram.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altram.inc                                            ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altdpram.inc                                          ;         ;
-; db/altsyncram_fom1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/altsyncram_fom1.tdf   ;         ;
-; db/decode_nma.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/decode_nma.tdf        ;         ;
-; db/decode_g2a.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/decode_g2a.tdf        ;         ;
-; db/mux_2hb.tdf                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/mux_2hb.tdf           ;         ;
-; altpll.tdf                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altpll.tdf                                            ;         ;
-; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratix_pll.inc                                       ;         ;
-; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratixii_pll.inc                                     ;         ;
-; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/cycloneii_pll.inc                                     ;         ;
-; db/altpll_80u.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/altpll_80u.tdf        ;         ;
-+----------------------------------+-----------------+------------------------------+-----------------------------------------------------------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                             ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                         ; Library ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------+---------+
+; state.v                          ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/state.v                  ;         ;
+; math.v                           ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/math.v                   ;         ;
+; fractal_gen.v                    ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v            ;         ;
+; fractal_start.v                  ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v          ;         ;
+; register.v                       ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/register.v               ;         ;
+; multiplier.v                     ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/multiplier.v             ;         ;
+; vga_adapter.v                    ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_adapter.v            ;         ;
+; vga_address_translator.v         ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_address_translator.v ;         ;
+; vga_controller.v                 ; yes             ; User Verilog HDL File        ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_controller.v         ;         ;
+; vga_pll.v                        ; yes             ; User Wizard-Generated File   ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_pll.v                ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altsyncram.tdf                             ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratix_ram_block.inc                      ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_mux.inc                                ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_decode.inc                             ;         ;
+; aglobal231.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc                             ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/a_rdenreg.inc                              ;         ;
+; altrom.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altrom.inc                                 ;         ;
+; altram.inc                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altram.inc                                 ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altdpram.inc                               ;         ;
+; db/altsyncram_fom1.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/altsyncram_fom1.tdf   ;         ;
+; db/decode_nma.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/decode_nma.tdf        ;         ;
+; db/decode_g2a.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/decode_g2a.tdf        ;         ;
+; db/mux_2hb.tdf                   ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/mux_2hb.tdf           ;         ;
+; altpll.tdf                       ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altpll.tdf                                 ;         ;
+; stratix_pll.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratix_pll.inc                            ;         ;
+; stratixii_pll.inc                ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/stratixii_pll.inc                          ;         ;
+; cycloneii_pll.inc                ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/cycloneii_pll.inc                          ;         ;
+; db/altpll_80u.tdf                ; yes             ; Auto-Generated Megafunction  ; C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/altpll_80u.tdf        ;         ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------------------+---------+
 
 
 +--------------------------------------------------------------+
@@ -240,13 +241,13 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 309            ;
+; Estimate of Logic utilization (ALMs needed) ; 311            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 588            ;
+; Combinational ALUT usage for logic          ; 592            ;
 ;     -- 7 input functions                    ; 0              ;
 ;     -- 6 input functions                    ; 28             ;
-;     -- 5 input functions                    ; 34             ;
-;     -- 4 input functions                    ; 58             ;
+;     -- 5 input functions                    ; 37             ;
+;     -- 4 input functions                    ; 59             ;
 ;     -- <=3 input functions                  ; 468            ;
 ;                                             ;                ;
 ; Dedicated logic registers                   ; 218            ;
@@ -262,7 +263,7 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
 ; Maximum fan-out                             ; 215            ;
-; Total fan-out                               ; 4278           ;
+; Total fan-out                               ; 4297           ;
 ; Average fan-out                             ; 4.39           ;
 +---------------------------------------------+----------------+
 
@@ -272,22 +273,22 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
 ; Compilation Hierarchy Node                              ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                   ; Entity Name            ; Library Name ;
 +---------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------+------------------------+--------------+
-; |fractal_start                                          ; 588 (1)             ; 218 (0)                   ; 230400            ; 18         ; 60   ; 0            ; |fractal_start                                                                                                        ; fractal_start          ; work         ;
-;    |mandelbrot:MB|                                      ; 496 (304)           ; 184 (0)                   ; 0                 ; 18         ; 0    ; 0            ; |fractal_start|mandelbrot:MB                                                                                          ; mandelbrot             ; work         ;
-;       |multiplier:M_AA|                                 ; 36 (36)             ; 0 (0)                     ; 0                 ; 3          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|multiplier:M_AA                                                                          ; multiplier             ; work         ;
-;       |multiplier:M_AB|                                 ; 35 (35)             ; 0 (0)                     ; 0                 ; 3          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|multiplier:M_AB                                                                          ; multiplier             ; work         ;
-;       |multiplier:M_BB|                                 ; 36 (36)             ; 0 (0)                     ; 0                 ; 3          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|multiplier:M_BB                                                                          ; multiplier             ; work         ;
-;       |multiplier:WIDTH_TO_HEIGHT|                      ; 36 (36)             ; 0 (0)                     ; 0                 ; 3          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|multiplier:WIDTH_TO_HEIGHT                                                               ; multiplier             ; work         ;
-;       |multiplier:X_STEP_SIZE|                          ; 0 (0)               ; 0 (0)                     ; 0                 ; 3          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|multiplier:X_STEP_SIZE                                                                   ; multiplier             ; work         ;
-;       |multiplier:Y_STEP_SIZE|                          ; 36 (36)             ; 0 (0)                     ; 0                 ; 3          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|multiplier:Y_STEP_SIZE                                                                   ; multiplier             ; work         ;
-;       |register:REG_A|                                  ; 0 (0)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|register:REG_A                                                                           ; register               ; work         ;
-;       |register:REG_B|                                  ; 1 (1)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|register:REG_B                                                                           ; register               ; work         ;
-;       |register:REG_I|                                  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|register:REG_I                                                                           ; register               ; work         ;
-;       |register:REG_J|                                  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|register:REG_J                                                                           ; register               ; work         ;
-;       |register:REG_N|                                  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|register:REG_N                                                                           ; register               ; work         ;
-;       |register:REG_X|                                  ; 0 (0)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|register:REG_X                                                                           ; register               ; work         ;
-;       |register:REG_Y|                                  ; 0 (0)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|register:REG_Y                                                                           ; register               ; work         ;
-;       |statemachine:SM|                                 ; 12 (12)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|mandelbrot:MB|statemachine:SM                                                                          ; statemachine           ; work         ;
+; |fractal_start                                          ; 592 (1)             ; 218 (0)                   ; 230400            ; 18         ; 60   ; 0            ; |fractal_start                                                                                                        ; fractal_start          ; work         ;
+;    |fractal_gen:MB|                                     ; 500 (308)           ; 184 (0)                   ; 0                 ; 18         ; 0    ; 0            ; |fractal_start|fractal_gen:MB                                                                                         ; fractal_gen            ; work         ;
+;       |math:X_STEP_SIZE|                                ; 0 (0)               ; 0 (0)                     ; 0                 ; 3          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|math:X_STEP_SIZE                                                                        ; math                   ; work         ;
+;       |math:Y_STEP_SIZE|                                ; 36 (36)             ; 0 (0)                     ; 0                 ; 3          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|math:Y_STEP_SIZE                                                                        ; math                   ; work         ;
+;       |multiplier:M_AA|                                 ; 36 (36)             ; 0 (0)                     ; 0                 ; 3          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|multiplier:M_AA                                                                         ; multiplier             ; work         ;
+;       |multiplier:M_AB|                                 ; 35 (35)             ; 0 (0)                     ; 0                 ; 3          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|multiplier:M_AB                                                                         ; multiplier             ; work         ;
+;       |multiplier:M_BB|                                 ; 36 (36)             ; 0 (0)                     ; 0                 ; 3          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|multiplier:M_BB                                                                         ; multiplier             ; work         ;
+;       |multiplier:WIDTH_TO_HEIGHT|                      ; 36 (36)             ; 0 (0)                     ; 0                 ; 3          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|multiplier:WIDTH_TO_HEIGHT                                                              ; multiplier             ; work         ;
+;       |register:REG_A|                                  ; 0 (0)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|register:REG_A                                                                          ; register               ; work         ;
+;       |register:REG_B|                                  ; 1 (1)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|register:REG_B                                                                          ; register               ; work         ;
+;       |register:REG_I|                                  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|register:REG_I                                                                          ; register               ; work         ;
+;       |register:REG_J|                                  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|register:REG_J                                                                          ; register               ; work         ;
+;       |register:REG_N|                                  ; 0 (0)               ; 16 (16)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|register:REG_N                                                                          ; register               ; work         ;
+;       |register:REG_X|                                  ; 0 (0)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|register:REG_X                                                                          ; register               ; work         ;
+;       |register:REG_Y|                                  ; 0 (0)               ; 32 (32)                   ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|register:REG_Y                                                                          ; register               ; work         ;
+;       |state:SM|                                        ; 12 (12)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |fractal_start|fractal_gen:MB|state:SM                                                                                ; state                  ; work         ;
 ;    |vga_adapter:VGA_ADAPTER|                            ; 91 (2)              ; 34 (0)                    ; 230400            ; 0          ; 0    ; 0            ; |fractal_start|vga_adapter:VGA_ADAPTER                                                                                ; vga_adapter            ; work         ;
 ;       |altsyncram:VideoMemory|                          ; 26 (0)              ; 8 (0)                     ; 230400            ; 0          ; 0    ; 0            ; |fractal_start|vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory                                                         ; altsyncram             ; work         ;
 ;          |altsyncram_fom1:auto_generated|               ; 26 (0)              ; 8 (8)                     ; 230400            ; 0          ; 0    ; 0            ; |fractal_start|vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory|altsyncram_fom1:auto_generated                          ; altsyncram_fom1        ; work         ;
@@ -330,7 +331,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 Encoding Type:  One-Hot
 +---------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |fractal_start|mandelbrot:MB|statemachine:SM|current                                                                              ;
+; State Machine - |fractal_start|fractal_gen:MB|state:SM|current                                                                                    ;
 +------------------+--------------+-----------------+--------------+------------------+---------------+---------------+--------------+--------------+
 ; Name             ; current.DONE ; current.ENDLOOP ; current.PLOT ; current.ITERLOOP ; current.ILOOP ; current.JLOOP ; current.INIT ; current.IDLE ;
 +------------------+--------------+-----------------+--------------+------------------+---------------+---------------+--------------+--------------+
@@ -345,16 +346,16 @@ Encoding Type:  One-Hot
 +------------------+--------------+-----------------+--------------+------------------+---------------+---------------+--------------+--------------+
 
 
-+--------------------------------------------------------------+
-; Registers Removed During Synthesis                           ;
-+-----------------------------------------+--------------------+
-; Register name                           ; Reason for Removal ;
-+-----------------------------------------+--------------------+
-; mandelbrot:MB|statemachine:SM|current~4 ; Lost fanout        ;
-; mandelbrot:MB|statemachine:SM|current~5 ; Lost fanout        ;
-; mandelbrot:MB|statemachine:SM|current~6 ; Lost fanout        ;
-; Total Number of Removed Registers = 3   ;                    ;
-+-----------------------------------------+--------------------+
++------------------------------------------------------------+
+; Registers Removed During Synthesis                         ;
++---------------------------------------+--------------------+
+; Register name                         ; Reason for Removal ;
++---------------------------------------+--------------------+
+; fractal_gen:MB|state:SM|current~4     ; Lost fanout        ;
+; fractal_gen:MB|state:SM|current~5     ; Lost fanout        ;
+; fractal_gen:MB|state:SM|current~6     ; Lost fanout        ;
+; Total Number of Removed Registers = 3 ;                    ;
++---------------------------------------+--------------------+
 
 
 +------------------------------------------------------+
@@ -377,7 +378,7 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |fractal_start|vga_adapter:VGA_ADAPTER|vga_controller:controller|yCounter[4]                                                   ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |fractal_start|vga_adapter:VGA_ADAPTER|vga_controller:controller|yCounter[9]                                                   ;
 ; 9:1                ; 3 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |fractal_start|vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|mux_2hb:mux3|l4_w0_n0_mux_dataout ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------------------------------------------------------+
 
@@ -882,7 +883,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +--------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mandelbrot:MB               ;
+; Parameter Settings for User Entity Instance: fractal_gen:MB              ;
 +---------------------+----------------------------------+-----------------+
 ; Parameter Name      ; Value                            ; Type            ;
 +---------------------+----------------------------------+-----------------+
@@ -893,90 +894,90 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_X ;
-+----------------+-------+--------------------------------------------------+
-; Parameter Name ; Value ; Type                                             ;
-+----------------+-------+--------------------------------------------------+
-; BITS           ; 32    ; Signed Integer                                   ;
-+----------------+-------+--------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_Y ;
-+----------------+-------+--------------------------------------------------+
-; Parameter Name ; Value ; Type                                             ;
-+----------------+-------+--------------------------------------------------+
-; BITS           ; 32    ; Signed Integer                                   ;
-+----------------+-------+--------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_A ;
-+----------------+-------+--------------------------------------------------+
-; Parameter Name ; Value ; Type                                             ;
-+----------------+-------+--------------------------------------------------+
-; BITS           ; 32    ; Signed Integer                                   ;
-+----------------+-------+--------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_B ;
-+----------------+-------+--------------------------------------------------+
-; Parameter Name ; Value ; Type                                             ;
-+----------------+-------+--------------------------------------------------+
-; BITS           ; 32    ; Signed Integer                                   ;
-+----------------+-------+--------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_N ;
-+----------------+-------+--------------------------------------------------+
-; Parameter Name ; Value ; Type                                             ;
-+----------------+-------+--------------------------------------------------+
-; BITS           ; 16    ; Signed Integer                                   ;
-+----------------+-------+--------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_I ;
-+----------------+-------+--------------------------------------------------+
-; Parameter Name ; Value ; Type                                             ;
-+----------------+-------+--------------------------------------------------+
-; BITS           ; 16    ; Signed Integer                                   ;
-+----------------+-------+--------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+---------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mandelbrot:MB|register:REG_J ;
-+----------------+-------+--------------------------------------------------+
-; Parameter Name ; Value ; Type                                             ;
-+----------------+-------+--------------------------------------------------+
-; BITS           ; 16    ; Signed Integer                                   ;
-+----------------+-------+--------------------------------------------------+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_X ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; BITS           ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +----------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mandelbrot:MB|statemachine:SM ;
+; Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_Y ;
 +----------------+-------+---------------------------------------------------+
 ; Parameter Name ; Value ; Type                                              ;
 +----------------+-------+---------------------------------------------------+
-; IDLE           ; 000   ; Unsigned Binary                                   ;
-; INIT           ; 001   ; Unsigned Binary                                   ;
-; JLOOP          ; 010   ; Unsigned Binary                                   ;
-; ILOOP          ; 011   ; Unsigned Binary                                   ;
-; ITERLOOP       ; 100   ; Unsigned Binary                                   ;
-; PLOT           ; 101   ; Unsigned Binary                                   ;
-; ENDLOOP        ; 110   ; Unsigned Binary                                   ;
-; DONE           ; 111   ; Unsigned Binary                                   ;
+; BITS           ; 32    ; Signed Integer                                    ;
 +----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_A ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; BITS           ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_B ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; BITS           ; 32    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_N ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; BITS           ; 16    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_I ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; BITS           ; 16    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fractal_gen:MB|register:REG_J ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; BITS           ; 16    ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: fractal_gen:MB|state:SM ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; IDLE           ; 000   ; Unsigned Binary                             ;
+; INIT           ; 001   ; Unsigned Binary                             ;
+; JLOOP          ; 010   ; Unsigned Binary                             ;
+; ILOOP          ; 011   ; Unsigned Binary                             ;
+; ITERLOOP       ; 100   ; Unsigned Binary                             ;
+; PLOT           ; 101   ; Unsigned Binary                             ;
+; ENDLOOP        ; 110   ; Unsigned Binary                             ;
+; DONE           ; 111   ; Unsigned Binary                             ;
++----------------+-------+---------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -1018,7 +1019,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +-------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "mandelbrot:MB|multiplier:M_AB"                                                         ;
+; Port Connectivity Checks: "fractal_gen:MB|multiplier:M_AB"                                                        ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port    ; Type   ; Severity ; Details                                                                             ;
 +---------+--------+----------+-------------------------------------------------------------------------------------+
@@ -1026,54 +1027,54 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------+
-; Port Connectivity Checks: "mandelbrot:MB|multiplier:Y_STEP_SIZE" ;
-+-----------+-------+----------+-----------------------------------+
-; Port      ; Type  ; Severity ; Details                           ;
-+-----------+-------+----------+-----------------------------------+
-; b[31..15] ; Input ; Info     ; Stuck at GND                      ;
-; b[13..11] ; Input ; Info     ; Stuck at GND                      ;
-; b[9..7]   ; Input ; Info     ; Stuck at GND                      ;
-; b[5..3]   ; Input ; Info     ; Stuck at GND                      ;
-; b[1..0]   ; Input ; Info     ; Stuck at GND                      ;
-; b[14]     ; Input ; Info     ; Stuck at VCC                      ;
-; b[10]     ; Input ; Info     ; Stuck at VCC                      ;
-; b[6]      ; Input ; Info     ; Stuck at VCC                      ;
-; b[2]      ; Input ; Info     ; Stuck at VCC                      ;
-+-----------+-------+----------+-----------------------------------+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "fractal_gen:MB|math:Y_STEP_SIZE" ;
++-----------+-------+----------+------------------------------+
+; Port      ; Type  ; Severity ; Details                      ;
++-----------+-------+----------+------------------------------+
+; b[31..15] ; Input ; Info     ; Stuck at GND                 ;
+; b[13..11] ; Input ; Info     ; Stuck at GND                 ;
+; b[9..7]   ; Input ; Info     ; Stuck at GND                 ;
+; b[5..3]   ; Input ; Info     ; Stuck at GND                 ;
+; b[1..0]   ; Input ; Info     ; Stuck at GND                 ;
+; b[14]     ; Input ; Info     ; Stuck at VCC                 ;
+; b[10]     ; Input ; Info     ; Stuck at VCC                 ;
+; b[6]      ; Input ; Info     ; Stuck at VCC                 ;
+; b[2]      ; Input ; Info     ; Stuck at VCC                 ;
++-----------+-------+----------+------------------------------+
 
 
-+------------------------------------------------------------------+
-; Port Connectivity Checks: "mandelbrot:MB|multiplier:X_STEP_SIZE" ;
-+-----------+-------+----------+-----------------------------------+
-; Port      ; Type  ; Severity ; Details                           ;
-+-----------+-------+----------+-----------------------------------+
-; b[13..12] ; Input ; Info     ; Stuck at VCC                      ;
-; b[9..8]   ; Input ; Info     ; Stuck at VCC                      ;
-; b[5..4]   ; Input ; Info     ; Stuck at VCC                      ;
-; b[1..0]   ; Input ; Info     ; Stuck at VCC                      ;
-; b[31..14] ; Input ; Info     ; Stuck at GND                      ;
-; b[11..10] ; Input ; Info     ; Stuck at GND                      ;
-; b[7..6]   ; Input ; Info     ; Stuck at GND                      ;
-; b[3..2]   ; Input ; Info     ; Stuck at GND                      ;
-+-----------+-------+----------+-----------------------------------+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "fractal_gen:MB|math:X_STEP_SIZE" ;
++-----------+-------+----------+------------------------------+
+; Port      ; Type  ; Severity ; Details                      ;
++-----------+-------+----------+------------------------------+
+; b[13..12] ; Input ; Info     ; Stuck at VCC                 ;
+; b[9..8]   ; Input ; Info     ; Stuck at VCC                 ;
+; b[5..4]   ; Input ; Info     ; Stuck at VCC                 ;
+; b[1..0]   ; Input ; Info     ; Stuck at VCC                 ;
+; b[31..14] ; Input ; Info     ; Stuck at GND                 ;
+; b[11..10] ; Input ; Info     ; Stuck at GND                 ;
+; b[7..6]   ; Input ; Info     ; Stuck at GND                 ;
+; b[3..2]   ; Input ; Info     ; Stuck at GND                 ;
++-----------+-------+----------+------------------------------+
 
 
-+----------------------------------------------------------------------+
-; Port Connectivity Checks: "mandelbrot:MB|multiplier:WIDTH_TO_HEIGHT" ;
-+-----------+-------+----------+---------------------------------------+
-; Port      ; Type  ; Severity ; Details                               ;
-+-----------+-------+----------+---------------------------------------+
-; a[31..26] ; Input ; Info     ; Stuck at GND                          ;
-; a[18..0]  ; Input ; Info     ; Stuck at GND                          ;
-; b[21..20] ; Input ; Info     ; Stuck at VCC                          ;
-; b[31..22] ; Input ; Info     ; Stuck at GND                          ;
-; b[19..0]  ; Input ; Info     ; Stuck at GND                          ;
-+-----------+-------+----------+---------------------------------------+
++-----------------------------------------------------------------------+
+; Port Connectivity Checks: "fractal_gen:MB|multiplier:WIDTH_TO_HEIGHT" ;
++-----------+-------+----------+----------------------------------------+
+; Port      ; Type  ; Severity ; Details                                ;
++-----------+-------+----------+----------------------------------------+
+; a[31..26] ; Input ; Info     ; Stuck at GND                           ;
+; a[18..0]  ; Input ; Info     ; Stuck at GND                           ;
+; b[21..20] ; Input ; Info     ; Stuck at VCC                           ;
+; b[31..22] ; Input ; Info     ; Stuck at GND                           ;
+; b[19..0]  ; Input ; Info     ; Stuck at GND                           ;
++-----------+-------+----------+----------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "mandelbrot:MB"                                                                                                                ;
+; Port Connectivity Checks: "fractal_gen:MB"                                                                                                               ;
 +-------+--------+----------+------------------------------------------------------------------------------------------------------------------------------+
 ; Port  ; Type   ; Severity ; Details                                                                                                                      ;
 +-------+--------+----------+------------------------------------------------------------------------------------------------------------------------------+
@@ -1097,7 +1098,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;     ENA SCLR          ; 18                          ;
 ;     ENA SLD           ; 125                         ;
 ;     plain             ; 15                          ;
-; arriav_lcell_comb     ; 589                         ;
+; arriav_lcell_comb     ; 593                         ;
 ;     arith             ; 387                         ;
 ;         0 data inputs ; 1                           ;
 ;         1 data inputs ; 87                          ;
@@ -1105,13 +1106,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 ;         3 data inputs ; 4                           ;
 ;         4 data inputs ; 43                          ;
 ;         5 data inputs ; 3                           ;
-;     normal            ; 97                          ;
+;     normal            ; 101                         ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 1                           ;
 ;         2 data inputs ; 9                           ;
 ;         3 data inputs ; 11                          ;
-;         4 data inputs ; 15                          ;
-;         5 data inputs ; 31                          ;
+;         4 data inputs ; 16                          ;
+;         5 data inputs ; 34                          ;
 ;         6 data inputs ; 28                          ;
 ;     shared            ; 105                         ;
 ;         0 data inputs ; 4                           ;
@@ -1124,7 +1125,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; stratixv_ram_block    ; 30                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 7.70                        ;
-; Average LUT depth     ; 4.49                        ;
+; Average LUT depth     ; 4.48                        ;
 +-----------------------+-----------------------------+
 
 
@@ -1143,43 +1144,45 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Sun Dec  8 16:26:56 2024
+    Info: Processing started: Wed Dec 11 23:28:57 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MandelaCatelog -c top_module
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file state.v
+    Info (12023): Found entity 1: state File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/state.v Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file math.v
+    Info (12023): Found entity 1: multiplier File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/math.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file fractal_gen.v
+    Info (12023): Found entity 1: fractal_gen File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 18
 Info (12021): Found 1 design units, including 1 entities, in source file fractal_start.v
-    Info (12023): Found entity 1: fractal_start File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/fractal_start.v Line: 3
-Info (12021): Found 1 design units, including 1 entities, in source file statemachine.v
-    Info (12023): Found entity 1: statemachine File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/statemachine.v Line: 1
+    Info (12023): Found entity 1: fractal_start File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file register.v
-    Info (12023): Found entity 1: register File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/register.v Line: 1
+    Info (12023): Found entity 1: register File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/register.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file multiplier.v
-    Info (12023): Found entity 1: multiplier File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/multiplier.v Line: 1
+    Info (12023): Found entity 1: math File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/multiplier.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file vga_adapter.v
-    Info (12023): Found entity 1: vga_adapter File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_adapter.v Line: 78
+    Info (12023): Found entity 1: vga_adapter File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_adapter.v Line: 78
 Info (12021): Found 1 design units, including 1 entities, in source file vga_address_translator.v
-    Info (12023): Found entity 1: vga_address_translator File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_address_translator.v Line: 4
+    Info (12023): Found entity 1: vga_address_translator File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_address_translator.v Line: 4
 Info (12021): Found 1 design units, including 1 entities, in source file vga_controller.v
-    Info (12023): Found entity 1: vga_controller File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_controller.v Line: 9
+    Info (12023): Found entity 1: vga_controller File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_controller.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file vga_pll.v
-    Info (12023): Found entity 1: vga_pll File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_pll.v Line: 36
-Info (12021): Found 1 design units, including 1 entities, in source file mandelbrot.v
-    Info (12023): Found entity 1: mandelbrot File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 18
-Warning (10236): Verilog HDL Implicit Net warning at fractal_start.v(36): created implicit net for "start" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/fractal_start.v Line: 36
-Warning (10236): Verilog HDL Implicit Net warning at mandelbrot.v(245): created implicit net for "initx" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 245
-Warning (10236): Verilog HDL Implicit Net warning at mandelbrot.v(245): created implicit net for "inity" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 245
-Warning (10236): Verilog HDL Implicit Net warning at mandelbrot.v(246): created implicit net for "inita" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 246
-Warning (10236): Verilog HDL Implicit Net warning at mandelbrot.v(246): created implicit net for "initb" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 246
-Warning (10236): Verilog HDL Implicit Net warning at mandelbrot.v(247): created implicit net for "initn" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 247
-Warning (10236): Verilog HDL Implicit Net warning at mandelbrot.v(247): created implicit net for "initi" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 247
-Warning (10236): Verilog HDL Implicit Net warning at mandelbrot.v(247): created implicit net for "initj" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 247
+    Info (12023): Found entity 1: vga_pll File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_pll.v Line: 36
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(166): created implicit net for "init_x" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 166
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(166): created implicit net for "init_y" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 166
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(166): created implicit net for "init_a" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 166
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(166): created implicit net for "init_b" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 166
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(167): created implicit net for "init_iteration_c" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 167
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(167): created implicit net for "init_x_pixel" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 167
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(167): created implicit net for "init_y_pixel" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 167
+Warning (10236): Verilog HDL Implicit Net warning at fractal_start.v(36): created implicit net for "start" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 36
 Info (12127): Elaborating entity "fractal_start" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at fractal_start.v(21): object "start_signal" assigned a value but never read File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/fractal_start.v Line: 21
-Info (12128): Elaborating entity "vga_adapter" for hierarchy "vga_adapter:VGA_ADAPTER" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/fractal_start.v Line: 58
-Info (12128): Elaborating entity "vga_address_translator" for hierarchy "vga_adapter:VGA_ADAPTER|vga_address_translator:user_input_translator" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_adapter.v Line: 196
-Info (12128): Elaborating entity "altsyncram" for hierarchy "vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_adapter.v Line: 217
-Info (12130): Elaborated megafunction instantiation "vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_adapter.v Line: 217
-Info (12133): Instantiated megafunction "vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory" with the following parameter: File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_adapter.v Line: 217
+Warning (10036): Verilog HDL or VHDL warning at fractal_start.v(21): object "start_signal" assigned a value but never read File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 21
+Info (12128): Elaborating entity "vga_adapter" for hierarchy "vga_adapter:VGA_ADAPTER" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 58
+Info (12128): Elaborating entity "vga_address_translator" for hierarchy "vga_adapter:VGA_ADAPTER|vga_address_translator:user_input_translator" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_adapter.v Line: 196
+Info (12128): Elaborating entity "altsyncram" for hierarchy "vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_adapter.v Line: 217
+Info (12130): Elaborated megafunction instantiation "vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_adapter.v Line: 217
+Info (12133): Instantiated megafunction "vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory" with the following parameter: File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_adapter.v Line: 217
     Info (12134): Parameter "WIDTH_A" = "3"
     Info (12134): Parameter "WIDTH_B" = "3"
     Info (12134): Parameter "INTENDED_DEVICE_FAMILY" = "Cyclone II"
@@ -1196,22 +1199,22 @@ Info (12133): Instantiated megafunction "vga_adapter:VGA_ADAPTER|altsyncram:Vide
     Info (12134): Parameter "POWER_UP_UNINITIALIZED" = "FALSE"
     Info (12134): Parameter "INIT_FILE" = "background.mif"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_fom1.tdf
-    Info (12023): Found entity 1: altsyncram_fom1 File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/altsyncram_fom1.tdf Line: 34
+    Info (12023): Found entity 1: altsyncram_fom1 File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/altsyncram_fom1.tdf Line: 34
 Info (12128): Elaborating entity "altsyncram_fom1" for hierarchy "vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory|altsyncram_fom1:auto_generated" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Critical Warning (127003): Can't find Memory Initialization File or Hexadecimal (Intel-Format) File C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/background.mif -- setting all initial values to 0 File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_adapter.v Line: 217
+Critical Warning (127003): Can't find Memory Initialization File or Hexadecimal (Intel-Format) File C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/background.mif -- setting all initial values to 0 File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_adapter.v Line: 217
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_nma.tdf
-    Info (12023): Found entity 1: decode_nma File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/decode_nma.tdf Line: 23
-Info (12128): Elaborating entity "decode_nma" for hierarchy "vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|decode_nma:decode2" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/altsyncram_fom1.tdf Line: 47
+    Info (12023): Found entity 1: decode_nma File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/decode_nma.tdf Line: 23
+Info (12128): Elaborating entity "decode_nma" for hierarchy "vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|decode_nma:decode2" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/altsyncram_fom1.tdf Line: 47
 Info (12021): Found 1 design units, including 1 entities, in source file db/decode_g2a.tdf
-    Info (12023): Found entity 1: decode_g2a File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/decode_g2a.tdf Line: 23
-Info (12128): Elaborating entity "decode_g2a" for hierarchy "vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|decode_g2a:rden_decode_b" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/altsyncram_fom1.tdf Line: 48
+    Info (12023): Found entity 1: decode_g2a File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/decode_g2a.tdf Line: 23
+Info (12128): Elaborating entity "decode_g2a" for hierarchy "vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|decode_g2a:rden_decode_b" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/altsyncram_fom1.tdf Line: 48
 Info (12021): Found 1 design units, including 1 entities, in source file db/mux_2hb.tdf
-    Info (12023): Found entity 1: mux_2hb File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/mux_2hb.tdf Line: 23
-Info (12128): Elaborating entity "mux_2hb" for hierarchy "vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|mux_2hb:mux3" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/altsyncram_fom1.tdf Line: 50
-Info (12128): Elaborating entity "vga_pll" for hierarchy "vga_adapter:VGA_ADAPTER|vga_pll:mypll" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_adapter.v Line: 235
-Info (12128): Elaborating entity "altpll" for hierarchy "vga_adapter:VGA_ADAPTER|vga_pll:mypll|altpll:altpll_component" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_pll.v Line: 53
-Info (12130): Elaborated megafunction instantiation "vga_adapter:VGA_ADAPTER|vga_pll:mypll|altpll:altpll_component" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_pll.v Line: 53
-Info (12133): Instantiated megafunction "vga_adapter:VGA_ADAPTER|vga_pll:mypll|altpll:altpll_component" with the following parameter: File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_pll.v Line: 53
+    Info (12023): Found entity 1: mux_2hb File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/mux_2hb.tdf Line: 23
+Info (12128): Elaborating entity "mux_2hb" for hierarchy "vga_adapter:VGA_ADAPTER|altsyncram:VideoMemory|altsyncram_fom1:auto_generated|mux_2hb:mux3" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/altsyncram_fom1.tdf Line: 50
+Info (12128): Elaborating entity "vga_pll" for hierarchy "vga_adapter:VGA_ADAPTER|vga_pll:mypll" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_adapter.v Line: 235
+Info (12128): Elaborating entity "altpll" for hierarchy "vga_adapter:VGA_ADAPTER|vga_pll:mypll|altpll:altpll_component" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_pll.v Line: 53
+Info (12130): Elaborated megafunction instantiation "vga_adapter:VGA_ADAPTER|vga_pll:mypll|altpll:altpll_component" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_pll.v Line: 53
+Info (12133): Instantiated megafunction "vga_adapter:VGA_ADAPTER|vga_pll:mypll|altpll:altpll_component" with the following parameter: File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_pll.v Line: 53
     Info (12134): Parameter "operation_mode" = "NORMAL"
     Info (12134): Parameter "intended_device_family" = "Cyclone II"
     Info (12134): Parameter "lpm_type" = "altpll"
@@ -1224,51 +1227,51 @@ Info (12133): Instantiated megafunction "vga_adapter:VGA_ADAPTER|vga_pll:mypll|a
     Info (12134): Parameter "clk0_multiply_by" = "1"
     Info (12134): Parameter "clk0_duty_cycle" = "50"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altpll_80u.tdf
-    Info (12023): Found entity 1: altpll_80u File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/altpll_80u.tdf Line: 26
+    Info (12023): Found entity 1: altpll_80u File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/altpll_80u.tdf Line: 26
 Info (12128): Elaborating entity "altpll_80u" for hierarchy "vga_adapter:VGA_ADAPTER|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altpll.tdf Line: 898
-Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_adapter:VGA_ADAPTER|vga_controller:controller" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/vga_adapter.v Line: 256
-Info (12128): Elaborating entity "mandelbrot" for hierarchy "mandelbrot:MB" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/fractal_start.v Line: 76
-Warning (10230): Verilog HDL assignment warning at mandelbrot.v(78): truncated value with size 33 to match size of target (32) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 78
-Warning (10230): Verilog HDL assignment warning at mandelbrot.v(93): truncated value with size 33 to match size of target (32) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 93
-Warning (10230): Verilog HDL assignment warning at mandelbrot.v(260): truncated value with size 7 to match size of target (3) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 260
-Info (12128): Elaborating entity "multiplier" for hierarchy "mandelbrot:MB|multiplier:WIDTH_TO_HEIGHT" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 69
-Info (12128): Elaborating entity "register" for hierarchy "mandelbrot:MB|register:REG_X" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 149
-Info (12128): Elaborating entity "register" for hierarchy "mandelbrot:MB|register:REG_N" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 181
-Info (12128): Elaborating entity "statemachine" for hierarchy "mandelbrot:MB|statemachine:SM" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/mandelbrot.v Line: 252
-Warning (10270): Verilog HDL Case Statement warning at statemachine.v(80): incomplete case statement has no default case item File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/statemachine.v Line: 80
-Info (10264): Verilog HDL Case Statement information at statemachine.v(80): all case item expressions in this case statement are onehot File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/statemachine.v Line: 80
+Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_adapter:VGA_ADAPTER|vga_controller:controller" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_adapter.v Line: 256
+Info (12128): Elaborating entity "fractal_gen" for hierarchy "fractal_gen:MB" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 76
+Warning (10230): Verilog HDL assignment warning at fractal_gen.v(73): truncated value with size 33 to match size of target (32) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 73
+Warning (10230): Verilog HDL assignment warning at fractal_gen.v(87): truncated value with size 33 to match size of target (32) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 87
+Info (12128): Elaborating entity "multiplier" for hierarchy "fractal_gen:MB|multiplier:WIDTH_TO_HEIGHT" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 65
+Info (12128): Elaborating entity "math" for hierarchy "fractal_gen:MB|math:X_STEP_SIZE" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 106
+Info (12128): Elaborating entity "register" for hierarchy "fractal_gen:MB|register:REG_X" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 126
+Info (12128): Elaborating entity "register" for hierarchy "fractal_gen:MB|register:REG_N" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 130
+Info (12128): Elaborating entity "state" for hierarchy "fractal_gen:MB|state:SM" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 170
+Warning (10270): Verilog HDL Case Statement warning at state.v(80): incomplete case statement has no default case item File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/state.v Line: 80
+Info (10264): Verilog HDL Case Statement information at state.v(80): all case item expressions in this case statement are onehot File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/state.v Line: 80
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "VGA_SYNC" is stuck at VCC File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/fractal_start.v Line: 15
+    Warning (13410): Pin "VGA_SYNC" is stuck at VCC File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 15
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 3 registers lost all their fanouts during netlist optimizations.
-Info (144001): Generated suppressed messages file C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/output_files/top_module.map.smsg
+Info (144001): Generated suppressed messages file C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/output_files/top_module.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Warning: RST port on the PLL is not properly connected on instance vga_adapter:VGA_ADAPTER|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated|generic_pll1. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/db/altpll_80u.tdf Line: 34
+Warning: RST port on the PLL is not properly connected on instance vga_adapter:VGA_ADAPTER|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated|generic_pll1. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/altpll_80u.tdf Line: 34
     Info: Must be connected
 Warning (21074): Design contains 4 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[0]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/fractal_start.v Line: 5
-    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/fractal_start.v Line: 5
-    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/fractal_start.v Line: 5
-    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/fractal_start.v Line: 6
-Info (21057): Implemented 752 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "KEY[0]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 5
+    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 5
+    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 6
+Info (21057): Implemented 756 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 45 output pins
-    Info (21061): Implemented 643 logic cells
+    Info (21061): Implemented 647 logic cells
     Info (21064): Implemented 30 RAM segments
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 18 DSP elements
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 24 warnings
-    Info: Peak virtual memory: 4887 megabytes
-    Info: Processing ended: Sun Dec  8 16:27:06 2024
-    Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:11
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 23 warnings
+    Info: Peak virtual memory: 4895 megabytes
+    Info: Processing ended: Wed Dec 11 23:29:06 2024
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:10
 
 
 +------------------------------------------+
 ; Analysis & Synthesis Suppressed Messages ;
 +------------------------------------------+
-The suppressed messages can be found in C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final-Testground/Broken converted code/output_files/top_module.map.smsg.
+The suppressed messages can be found in C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/output_files/top_module.map.smsg.
 
 

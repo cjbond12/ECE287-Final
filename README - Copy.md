@@ -35,16 +35,16 @@ A fractal is a graphically recursive pattern that repeats itself at various scal
    - An efficient **state machine** manages the fractal generation:
      - **IDLE**: Waits for the `start` signal.
      - **INIT**: Resets and initializes registers.
-     - **JLOOP/ILOOP**: Iterates over rows and columns of pixels.
+     - **XLOOP/YLOOP**: Iterates over rows and columns of pixels.
      - **ITERLOOP**: Performs the fractal calculation for each pixel.
      - **PLOT**: Sends the calculated pixel color to the VGA display.
      - **DONE**: Signals the end of computation.
 
 ### 4. **VGA Display Integration**:
-   - Supports **320x240** and **160x120** resolutions.
-   - Color coding is based on the iteration count, with customizable palettes:
+   - Supports **320x240** and **160x120** resolutions. (I haven't tested 160x120 at all)
+   - Color coding is based on the iteration count, with customizable palettes: (Gets to
      - Low iterations: Black and Blue.
-     - Higher iterations: Green, Cyan, and White.
+     - Higher iterations: Green, Cyan, Purple and White. 
    - Implements a double-buffered approach for seamless updates.
 
 ### 5. **User Interaction**:

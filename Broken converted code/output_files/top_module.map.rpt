@@ -1,5 +1,5 @@
 Analysis & Synthesis report for top_module
-Wed Dec 11 23:29:06 2024
+Thu Dec 12 08:51:15 2024
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -72,7 +72,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Dec 11 23:29:06 2024          ;
+; Analysis & Synthesis Status     ; Successful - Thu Dec 12 08:51:15 2024          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; top_module                                     ;
 ; Top-level Entity Name           ; fractal_start                                  ;
@@ -1144,7 +1144,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Wed Dec 11 23:28:57 2024
+    Info: Processing started: Thu Dec 12 08:51:06 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off MandelaCatelog -c top_module
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -1168,13 +1168,13 @@ Info (12021): Found 1 design units, including 1 entities, in source file vga_con
     Info (12023): Found entity 1: vga_controller File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_controller.v Line: 9
 Info (12021): Found 1 design units, including 1 entities, in source file vga_pll.v
     Info (12023): Found entity 1: vga_pll File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_pll.v Line: 36
-Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(166): created implicit net for "init_x" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 166
-Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(166): created implicit net for "init_y" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 166
-Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(166): created implicit net for "init_a" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 166
-Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(166): created implicit net for "init_b" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 166
-Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(167): created implicit net for "init_iteration_c" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 167
-Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(167): created implicit net for "init_x_pixel" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 167
-Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(167): created implicit net for "init_y_pixel" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 167
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(185): created implicit net for "init_x" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 185
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(185): created implicit net for "init_y" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 185
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(185): created implicit net for "init_a" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 185
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(185): created implicit net for "init_b" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 185
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(186): created implicit net for "init_iteration_c" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 186
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(186): created implicit net for "init_x_pixel" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 186
+Warning (10236): Verilog HDL Implicit Net warning at fractal_gen.v(186): created implicit net for "init_y_pixel" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 186
 Warning (10236): Verilog HDL Implicit Net warning at fractal_start.v(36): created implicit net for "start" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 36
 Info (12127): Elaborating entity "fractal_start" for the top level hierarchy
 Warning (10036): Verilog HDL or VHDL warning at fractal_start.v(21): object "start_signal" assigned a value but never read File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 21
@@ -1230,14 +1230,14 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/altp
     Info (12023): Found entity 1: altpll_80u File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/db/altpll_80u.tdf Line: 26
 Info (12128): Elaborating entity "altpll_80u" for hierarchy "vga_adapter:VGA_ADAPTER|vga_pll:mypll|altpll:altpll_component|altpll_80u:auto_generated" File: c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/altpll.tdf Line: 898
 Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_adapter:VGA_ADAPTER|vga_controller:controller" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/vga_adapter.v Line: 256
-Info (12128): Elaborating entity "fractal_gen" for hierarchy "fractal_gen:MB" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 76
-Warning (10230): Verilog HDL assignment warning at fractal_gen.v(73): truncated value with size 33 to match size of target (32) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 73
-Warning (10230): Verilog HDL assignment warning at fractal_gen.v(87): truncated value with size 33 to match size of target (32) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 87
-Info (12128): Elaborating entity "multiplier" for hierarchy "fractal_gen:MB|multiplier:WIDTH_TO_HEIGHT" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 65
-Info (12128): Elaborating entity "math" for hierarchy "fractal_gen:MB|math:X_STEP_SIZE" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 106
-Info (12128): Elaborating entity "register" for hierarchy "fractal_gen:MB|register:REG_X" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 126
-Info (12128): Elaborating entity "register" for hierarchy "fractal_gen:MB|register:REG_N" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 130
-Info (12128): Elaborating entity "state" for hierarchy "fractal_gen:MB|state:SM" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 170
+Info (12128): Elaborating entity "fractal_gen" for hierarchy "fractal_gen:MB" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_start.v Line: 77
+Warning (10230): Verilog HDL assignment warning at fractal_gen.v(78): truncated value with size 33 to match size of target (32) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 78
+Warning (10230): Verilog HDL assignment warning at fractal_gen.v(93): truncated value with size 33 to match size of target (32) File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 93
+Info (12128): Elaborating entity "multiplier" for hierarchy "fractal_gen:MB|multiplier:WIDTH_TO_HEIGHT" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 69
+Info (12128): Elaborating entity "math" for hierarchy "fractal_gen:MB|math:X_STEP_SIZE" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 114
+Info (12128): Elaborating entity "register" for hierarchy "fractal_gen:MB|register:REG_X" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 138
+Info (12128): Elaborating entity "register" for hierarchy "fractal_gen:MB|register:REG_N" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 142
+Info (12128): Elaborating entity "state" for hierarchy "fractal_gen:MB|state:SM" File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/fractal_gen.v Line: 189
 Warning (10270): Verilog HDL Case Statement warning at state.v(80): incomplete case statement has no default case item File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/state.v Line: 80
 Info (10264): Verilog HDL Case Statement information at state.v(80): all case item expressions in this case statement are onehot File: C:/Users/cjbon/OneDrive/Documents/GitHub/ECE287-Final/Broken converted code/state.v Line: 80
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
@@ -1263,8 +1263,8 @@ Info (21057): Implemented 756 device resources after synthesis - the final resou
     Info (21065): Implemented 1 PLLs
     Info (21062): Implemented 18 DSP elements
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 23 warnings
-    Info: Peak virtual memory: 4895 megabytes
-    Info: Processing ended: Wed Dec 11 23:29:06 2024
+    Info: Peak virtual memory: 4887 megabytes
+    Info: Processing ended: Thu Dec 12 08:51:15 2024
     Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:10
 

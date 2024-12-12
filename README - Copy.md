@@ -35,21 +35,22 @@ A fractal is a graphically recursive pattern that repeats itself at various scal
    - An efficient **state machine** manages the fractal generation:
      - **IDLE**: Waits for the `start` signal.
      - **INIT**: Resets and initializes registers.
-     - **JLOOP/ILOOP**: Iterates over rows and columns of pixels.
+     - **XLOOP/YLOOP**: Iterates over rows and columns of pixels.
      - **ITERLOOP**: Performs the fractal calculation for each pixel.
      - **PLOT**: Sends the calculated pixel color to the VGA display.
      - **DONE**: Signals the end of computation.
 
 ### 4. **VGA Display Integration**:
-   - Supports **320x240** and **160x120** resolutions.
-   - Color coding is based on the iteration count, with customizable palettes:
+   - Supports **320x240** and **160x120** resolutions. (I haven't tested 160x120 at all)
+   - Color coding is based on the iteration count, with customizable palettes: (Gets to roughly 50 iterations)
      - Low iterations: Black and Blue.
-     - Higher iterations: Green, Cyan, and White.
+     - Higher iterations: Green, Cyan, Purple and White. 
    - Implements a double-buffered approach for seamless updates.
 
 ### 5. **User Interaction**:
    - **Switches (SW)** control zoom, horizontal, and vertical offsets:
-     - SW(0-2): Zoom levels (2x, 4x, 8x).
+   - These are all scaled levels from bit 000 to bit 111 (7 levels)
+     - SW(0-2): Zoom levels 
      - SW(3-5): Horizontal shifts.
      - SW(6-8): Vertical shifts.
    - **Key(3)**: Reset to regenerate the image after adjustments.
@@ -85,27 +86,6 @@ A fractal is a graphically recursive pattern that repeats itself at various scal
    - The Mandelbrot Set fractal is displayed with smooth zooming and shifting capabilities.
    - Adjusted color palettes enhance contrast and visual appeal.
 
-**Images**:
-- ![Mandelbrot Set on Monitor](#)
-- ![Zoomed-In Mandelbrot](#)
-- ![Color Variations](#)
-
----
-
-## **Features and Functionality**
-
-### 1. **Dynamic Fractal Control**:
-   - Zoom levels and offsets allow users to explore different regions of the fractal.
-
-### 2. **Real-Time Rendering**:
-   - Fast computation cycles ensure real-time responsiveness.
-
-### 3. **Customizable Resolution and Colors**:
-   - Supports both high and low resolutions.
-   - Palette changes offer diverse visual styles.
-
----
-
 ## **Conclusion**
 
-This project successfully demonstrates the computational power of FPGAs by generating a complex fractal in real-time. The combination of fixed-point arithmetic, efficient state machine design, and VGA integration makes this an engaging and visually appealing project. Despite challenges with the initial implementation, the final design is robust, customizable, and capable of producing high-quality fractal visualizations.
+This project successfully demonstrates the computational power of FPGAs by generating a complex fractal. The combination of fixed-point arithmetic, efficient state machine design, and VGA integration makes this an engaging and visually appealing project. Despite challenges with the initial implementation, the final design is robust, customizable, and capable of producing high-quality fractal visualizations.

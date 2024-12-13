@@ -1,84 +1,50 @@
-287 Project
+Here’s the simplified version of the README, following the example structure and keeping it simple:
 
-Tested on Cyclone V FPGA
+---
 
-Goal: Produce a Mandelbrot Set Fractal generated in the FPGA Board and displayed to the monitor via a VGA cable
+# **ECE287 Project: Mandelbrot Set Fractal Generator**
 
-A Fractal is a graph that endlessly generates the same pattern over and over again while expanding or zooming out. 
-Think of a triangle that is made of 3 smaller triangles that are themselves made of 3 smaller triangles. 
-This pattern continues for ever. 
+**Tested on:** Cyclone V FPGA  
+**Goal:** Generate and display the Mandelbrot Set Fractal on a monitor through VGA.  
 
-The Mandelbrot Set is one of the most reconizable fractal disigns and the one we choose to repilcate on the FPGA.
-We sourced our design from a github what was written in SV (System Verilog) and converted it into verilog.
-We had to debug issues converting the original code into verilog as SV has many function that verilog does not have. 
-We also ran into issues where random or messed up images were displayed. These were often very interesting and would make some nice backgrounds.
+---
 
-![image4](https://github.com/user-attachments/assets/ec5f7950-ca09-4a90-adc1-bb16d293f247)
-This was from messing with the VGA output and what was actually being sent 
+## **Overview**
+The Mandelbrot Set is one of the most recognizable fractals, representing complex patterns formed by a simple recursive formula:
 
-![image3](https://github.com/user-attachments/assets/d1defecd-a100-4084-a479-27c320ef05d1)
+z_{n+1} = z_{n}^2 + c
 
-![image1](https://github.com/user-attachments/assets/d813345c-d7d4-4d3d-bfc0-628f0b4e8c88)
+This project calculates and displays the fractal using the FPGA hardware. Users can zoom into and pan around the fractal using switches on the FPGA board.
 
+---
 
+## **Switch Controls**
+| **Function**         | **Control**  | **Description**                               |
+|----------------------|--------------|-----------------------------------------------|
+| **Regenerate**       | **KEY[3]**   | Resets the fractal to its default view.       |
+| **Zoom Levels**      | **SW[0:2]**  | Selects zoom levels 7 levels(3b'000 - 3b'111).|
+| **Move Horizonally** | **SW[3:5]**  | Shifts horizontally 7 levels(3b'000 - 3b'111).|
+| **Move Veritcally**  | **SW[6:8]**  | Shifts vertically 7 levels(3b'000 - 3b'111).  |
 
-![image6](https://github.com/user-attachments/assets/bc6ca436-9eff-4e09-ba1e-323c4c00603e)
-The Eye of Sauron! This happened because we were messing with the algorithem calculations
+---
 
-![image7](https://github.com/user-attachments/assets/ee31349f-8b33-4474-ad05-c97bdf956af9)
+## **How to Operate**
+1. Load the compiled bitstream onto the Cyclone V FPGA using Quartus.
+2. Connect the board to a VGA-compatible monitor.
+3. Use the switches to explore the Mandelbrot Set:
+   - Toggle **SW[0:2]** for zooming.
+   - Toggle **SW[3:8]** for panning.
+4. Press **KEY[3]** to regenerate based on switches set.
 
+---
 
-List of switches and which ones zoom in and out and move the image left, right, up, and down:
+## **Image/Video**
 
-Reset Image:
+Video of the Mandelbrot Generator: https://youtube.com/shorts/O06DklgDeBc?feature=share
 
-Key(3)- Pressing Key(3) regenerates the image. Do this after shifting or zooming into the image
+![VID_20241212_103231259_exported_31787](https://github.com/user-attachments/assets/2676c140-907c-486b-888e-fe6a68a5c0da)
+![VID_20241212_103231259_exported_13442](https://github.com/user-attachments/assets/8da0a9e2-6b52-450e-aed8-7cb7c46cdf4f)
+![VID_20241212_103231259_exported_24995](https://github.com/user-attachments/assets/f34f0f41-3b91-479c-8d2d-eaf5d4b0567b)
 
-Zoom: 
-
-SW(0)- Zoom in by factor of 2X
-
-SW(1)- Zoom in by factor of 4X
-
-SW(2)- Zoom in by factor of 8X
-
-Horizontal Shift:
-
-SW(3)- Shift Image left by factor of 2X
-
-SW(4)- Shift Image left by factor of 4X
-
-SW(5)- Shift Image left by factor of 8X
-
-Vertical Shift:
-
-SW(6)- Shift Image up by factor of 2X
-
-SW(7)- Shift Image up by factor of 4X
-
-SW(8)- Shift Image up by factor of 8X
-
-
-Finished Project:
-
-![Mandelbrot on Monitor](https://github.com/user-attachments/assets/b9d430f0-c206-4c73-b210-48f75a9e75b9)
-
-
-![Mandlebrot zoomed in and centered](https://github.com/user-attachments/assets/e46a039a-b0b3-49cb-bf4a-7c56d8b52633)
-This is a zoomed in version of the Mandlebrot that is centered on the monitor by using the switches
-
-
-![Mandelbrot zoomed in more](https://github.com/user-attachments/assets/3e31ae4f-3fe9-4a7e-bdcc-a25f5ff81fb3)
-
-
-![Mandlebrot with Changed Colors V1](https://github.com/user-attachments/assets/37771001-5194-44e7-a06a-ee51a0b2bcfb)
-Changing the colors of the Fractal
-
-
-![Mandlebrot with Changed Colors V2](https://github.com/user-attachments/assets/4285b987-0df1-491d-9b5b-946906a5cfdb)
-Mandlebrot with changed colors to make it contrast with the background better
-
-
-Link to Original GitHub with the SV Code:
-https://github.com/FSXAC/FPGAMandelbrot
-
+![IMG_20241212_101257143](https://github.com/user-attachments/assets/6faea78a-ed24-44f0-8f44-33edefd6d289)
+Bad image quality from phone.

@@ -42,9 +42,13 @@ This project calculates and displays the fractal using the FPGA hardware. Users 
 
 Video of the Mandelbrot Generator: https://youtube.com/shorts/O06DklgDeBc?feature=share
 
-![VID_20241212_103231259_exported_31787](https://github.com/user-attachments/assets/2676c140-907c-486b-888e-fe6a68a5c0da)
+Zoom level 1 and centered:
 ![VID_20241212_103231259_exported_13442](https://github.com/user-attachments/assets/8da0a9e2-6b52-450e-aed8-7cb7c46cdf4f)
+
+Zoom Level 2 and centered:
 ![VID_20241212_103231259_exported_24995](https://github.com/user-attachments/assets/f34f0f41-3b91-479c-8d2d-eaf5d4b0567b)
 
+Shifted left same zoom:
+![VID_20241212_103231259_exported_31787](https://github.com/user-attachments/assets/2676c140-907c-486b-888e-fe6a68a5c0da)
 ![IMG_20241212_101257143](https://github.com/user-attachments/assets/6faea78a-ed24-44f0-8f44-33edefd6d289)
 Bad image quality from phone.
